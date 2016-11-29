@@ -24,12 +24,13 @@ angular.module('hangouts', ['firebase'])
     
     var hangouts = {
         'items': items,
-        addItem: function(hangoutName, hostName, phoneNumber, location, hangoutTime, description, maxGuests){
+        addItem: function(hangoutName, hostName, phoneNumber, location, hangoutDate, hangoutTime, description, maxGuests){
             items.$add({
                 'hangoutName': hangoutName,
                 'hostName': hostName,
                 'phoneNumber': phoneNumber,
                 'location': location,
+                'hangoutDate': hangoutDate,
                 'hangoutTime': hangoutTime,
                 'description': description,
                 'maxGuests': maxGuests
