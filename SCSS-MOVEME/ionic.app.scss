@@ -1,0 +1,27 @@
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+@import "../www/lib/ionic/scss";
+.grey {
+	background-color: grey;
+}
+
+.ltgrey {
+	background-color: lightgrey;
+}
+
+.fbltgrey {
+	background-color: #dfe3ee;
+}
+
+.center {
+	text-align: center;
+}
+
+.assertive2 {
+	background-color: #EF473A;
+}
+
+.cardtitle {
+	background-color: #f1f1f1;
+	font-weight: 600;
+}
+

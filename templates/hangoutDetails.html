@@ -1,0 +1,23 @@
+<ion-view title="Hangout Details" id="page6">
+  <ion-content padding="true" class=" manual-remove-top-padding has-header">
+    <div class="list card manual-card-fullwidth" id="hangoutDetails-card22">
+      <ion-list id="hangoutDetails-list7">
+        <ion-item id="hangoutDetails-list-item39" class="cardtitle center">{{item.hangoutName}}</ion-item>
+        <ion-item class="item-avatar" id="hangoutDetails-list-item40">
+          <img src="img/Bne5LjbMSLKlVRcSwzCU_cartoonman.jpg">
+          <h2>Hosted by: {{item.hostName}}</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" id="hangoutDetails-list-item41">
+          <i class="icon ion-location"></i>{{item.location}}</ion-item>
+        <ion-item class="item-icon-left" id="hangoutDetails-list-item42">
+          <i class="icon ion-android-time"></i>{{item.hangoutTime}}</ion-item>
+        <ion-item id="hangoutDetails-list-item44">Max Guests: {{item.maxGuests}}</ion-item>
+        <ion-item class="item-icon-left" id="hangoutDetails-list-item47" href="tel:{{item.phoneNumber}} ">
+          <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
+      </ion-list>
+    </div>
+    <div id="hangoutDetails-markdown22" class="show-list-numbers-and-dots">
+      <p style="color:#000000;">{{item.description}} </p>
+    </div>
+  </ion-content>
+</ion-view>
