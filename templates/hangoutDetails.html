@@ -1,6 +1,7 @@
 <ion-view title="Hangout Details" id="page6">
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
     <div class="list card manual-card-fullwidth" id="hangoutDetails-card22">
+      <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM dd, yyyy \| hh:mm a'}}</div>
       <ion-list id="hangoutDetails-list7">
         <ion-item id="hangoutDetails-list-item39" class="cardtitle center">{{item.hangoutName}}</ion-item>
         <ion-item class="item-avatar" id="hangoutDetails-list-item40">
@@ -14,6 +15,8 @@
         <ion-item class="item-icon-left" id="hangoutDetails-list-item42">
           <i class="icon ion-android-time"></i>{{item.hangoutTime}}</ion-item>
         <ion-item id="hangoutDetails-list-item44">Max Guests: {{item.maxGuests}}</ion-item>
+        <ion-item class="item-icon-left" id="hangoutDetails-list-item50" href="mailto:">
+          <i class="icon ion-email"></i>{{item.email}} </ion-item>
         <ion-item class="item-icon-left" id="hangoutDetails-list-item47" href="tel:{{item.phoneNumber}} ">
           <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
       </ion-list>
