@@ -11,6 +11,7 @@ function ($scope, $stateParams, Hangouts, $ionicModal) {
         'hangoutName': '',
         'hostName': '',
         'phoneNumber': '',
+        'email': '',
         'location': '',
         'hangoutDate': '',
         'hangoutTime': '',
@@ -26,6 +27,7 @@ function ($scope, $stateParams, Hangouts, $ionicModal) {
     "<ion-content class='padding'>" +
       "Name of your Hangout?<label class='item item-input'><input type='text' placeholder='e.g., Board Game Night' ng-model='data.hangoutName' /></label>" + "<br>" + 
       "Your name?<label class='item item-input'><input type='text' placeholder='e.g., Kris B.' ng-model='data.hostName' /></label>" + "<br>" +
+      "Your email?<label class='item item-input'><input type='text' placeholder='e.g., john@gmail.com' ng-model='data.email' /></label>" + "<br>" +
       "Your number? (so guests can contact you) <label class='item item-input'><input type='text' placeholder='e.g., 408-323-1222' ng-model='data.phoneNumber' /></label>" + "<br>" +
       "Location of your Hangout?<label class='item item-input'><input type='text' placeholder='e.g., Game Castle' ng-model='data.location' /></label>" + "<br>" + 
       "Hangout date?<label class='item item-input'><input type='text' placeholder='e.g., Tuesday 11/28/16' ng-model='data.hangoutDate' /></label>" + "<br>" + 
@@ -47,6 +49,7 @@ function ($scope, $stateParams, Hangouts, $ionicModal) {
     $scope.closeModal = function(){
         $scope.data.hangoutName = '';
         $scope.data.hostName = '';
+        $scope.data.email = '';
         $scope.data.phoneNumber = '';
         $scope.data.location = '';
         $scope.data.hangoutDate = '';
@@ -57,7 +60,7 @@ function ($scope, $stateParams, Hangouts, $ionicModal) {
     }
     
     $scope.addItem = function(){
-        Hangouts.addItem($scope.data.hangoutName, $scope.data.hostName, $scope.data.phoneNumber, $scope.data.location, $scope.data.hangoutDate, $scope.data.hangoutTime, $scope.data.description, $scope.data.maxGuests);
+        Hangouts.addItem($scope.data.hangoutName, $scope.data.hostName, $scope.data.email, $scope.data.phoneNumber, $scope.data.location, $scope.data.hangoutDate, $scope.data.hangoutTime, $scope.data.description, $scope.data.maxGuests);
         $scope.closeModal();   
     }
 

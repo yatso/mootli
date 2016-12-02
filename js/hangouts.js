@@ -24,16 +24,18 @@ angular.module('hangouts', ['firebase'])
     
     var hangouts = {
         'items': items,
-        addItem: function(hangoutName, hostName, phoneNumber, location, hangoutDate, hangoutTime, description, maxGuests){
+        addItem: function(hangoutName, hostName, email, phoneNumber, location, hangoutDate, hangoutTime, description, maxGuests){
             items.$add({
                 'hangoutName': hangoutName,
                 'hostName': hostName,
+                'email': email,
                 'phoneNumber': phoneNumber,
                 'location': location,
                 'hangoutDate': hangoutDate,
                 'hangoutTime': hangoutTime,
                 'description': description,
-                'maxGuests': maxGuests
+                'maxGuests': maxGuests,
+                'postDateTime': firebase.database.ServerValue.TIMESTAMP
             });
         },
         setFinished: function(item, newV){
