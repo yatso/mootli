@@ -8,13 +8,14 @@
           <img src="img/Bne5LjbMSLKlVRcSwzCU_cartoonman.jpg">
           <h2>Hosted by: {{item.hostName}}</h2>
         </ion-item>
+        <ion-item class="item-icon-left" id="hangoutDetails-list-item49">
+          <i class="icon ion-calendar"></i>{{item.hangoutDate | date:'EEEE, MMMM dd'}}</ion-item>
+        <ion-item class="item-icon-left" id="hangoutDetails-list-item42">
+          <i class="icon ion-android-time"></i>{{item.hangoutStartTime | date:'h:mm a'}} - {{item.hangoutEndTime | date:'h:mm a'}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutDetails-list-item41">
           <i class="icon ion-location"></i>{{item.location}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item49">
-          <i class="icon ion-calendar"></i>{{item.hangoutDate}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item42">
-          <i class="icon ion-android-time"></i>{{item.hangoutTime}}</ion-item>
-        <ion-item id="hangoutDetails-list-item44">Max Guests: {{item.maxGuests}}</ion-item>
+        <ion-item class="item-icon-left" id="hangoutDetails-list-item44">
+          <i class="icon ion-ios-people"></i>Max Guests: {{item.maxGuests}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutDetails-list-item50" href="mailto:{{item.email}}">
           <i class="icon ion-email"></i>{{item.email}} </ion-item>
         <ion-item class="item-icon-left" id="hangoutDetails-list-item47" href="tel:{{item.phoneNumber}} ">

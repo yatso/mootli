@@ -1,26 +1,27 @@
 <ion-view title="Hangouts" id="page2" style="background-color:#FAFAFA;">
   <ion-nav-buttons side="right" class="has-header">
-    <button class="button button-stable icon ion-android-add" ng-click="showModal()"> Make</button>
+    <button class="button button-stable icon ion-android-add" ui-sref="makeAHangout"> Make</button>
   </ion-nav-buttons>
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
     <a class="list card" style="display:block;text-decoration:none;" ui-sref="hangoutDetails({&quot;item&quot;:&quot;&quot;+item.$id+&quot;&quot;})" id="hangouts-card24" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
-      <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM dd, yyyy \| hh:mm a'}}</div>
+      <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM d, yyyy \| h:mm a'}}</div>
       <ion-list id="hangouts-list5">
         <ion-item id="hangouts-list-item20" class="cardtitle center">{{item.hangoutName}}</ion-item>
         <ion-item class="item-avatar" id="hangouts-list-item21">
           <img src="img/WgnCdTQu2JkTfW7xnsWw_people_avatar.jpg">
           <h2>Hosted by: {{item.hostName}}</h2>
         </ion-item>
+        <ion-item class="item-icon-left" id="hangouts-list-item48">
+          <i class="icon ion-calendar"></i>{{item.hangoutDate | date:'EEEE, MMMM dd'}}</ion-item>
+        <ion-item class="item-icon-left" id="hangouts-list-item23">
+          <i class="icon ion-android-time"></i>{{item.hangoutStartTime | date:'h:mm a'}} - {{item.hangoutEndTime | date:'h:mm a'}}</ion-item>
         <ion-item class="item-icon-left" id="hangouts-list-item22">
           <i class="icon ion-location"></i>{{item.location}}</ion-item>
-        <ion-item class="item-icon-left" id="hangouts-list-item48">
-          <i class="icon ion-calendar"></i>{{item.hangoutDate}}</ion-item>
-        <ion-item class="item-icon-left" id="hangouts-list-item23">
-          <i class="icon ion-android-time"></i>{{item.hangoutTime}}</ion-item>
-        <ion-item id="hangouts-list-item25">Max Guests: {{item.maxGuests}}</ion-item>
+        <ion-item class="item-icon-left" id="hangouts-list-item25">
+          <i class="icon ion-ios-people"></i>Max Guests: {{item.maxGuests}}</ion-item>
         <ion-item id="hangouts-list-item24">{{item.description}}</ion-item>
       </ion-list>
-      <button id="hangouts-button11" class="button button-positive  button-block">Join</button>
+      <button id="hangouts-button11" class="button button-positive button-large button-block">Join</button>
     </a>
   </ion-content>
 </ion-view>
