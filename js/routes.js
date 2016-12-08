@@ -31,6 +31,12 @@ angular.module('app.routes', [])
     controller: 'hangoutDetailsCtrl'
   })
 
+  .state('makeAHangout', {
+    url: '/make',
+    templateUrl: 'templates/makeAHangout.html',
+    controller: 'makeAHangoutCtrl'
+  })
+
 $urlRouterProvider.otherwise('/hangouts')
 
   
