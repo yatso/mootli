@@ -3,6 +3,9 @@
     <button class="button button-stable icon ion-android-add" ui-sref="makeAHangout"> Make</button>
   </ion-nav-buttons>
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
+    <div id="hangouts-markdown23" style="text-align:right;" class="show-list-numbers-and-dots">
+      <p style="margin-top:0px;color:#EEEEEE;">v1.22</p>
+    </div>
     <a class="list card" style="display:block;text-decoration:none;" ui-sref="hangoutDetails({&quot;item&quot;:&quot;&quot;+item.$id+&quot;&quot;})" id="hangouts-card24" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
       <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM d, yyyy \| h:mm a'}}</div>
       <ion-list id="hangouts-list5">
