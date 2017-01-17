@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services','firebase','hangouts',])
+angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services','firebase','firebaseConfig','hangouts','fbloginService',])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
   
@@ -64,14 +64,16 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     restrict: 'A',
     replace: false,
     transclude: false,
-    scope: {},
     link: function(scope, element, attrs) {
-      var place = attrs['hrefInappbrowser'] || '_system';
+      var href = attrs['hrefInappbrowser'];
+
+      attrs.$observe('hrefInappbrowser', function(val){
+        href = val;
+      });
+      
       element.bind('click', function (event) {
 
-        var href = event.currentTarget.href;
-
-        window.open(href, place, 'location=yes');
+        window.open(href, '_system', 'location=yes');
 
         event.preventDefault();
         event.stopPropagation();

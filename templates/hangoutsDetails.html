@@ -1,28 +1,28 @@
-<ion-view title="Hangout Details" id="page6">
+<ion-view title="Hangouts Details" id="page5">
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
-    <div class="list card manual-card-fullwidth" id="hangoutDetails-card22">
+    <div class="list card manual-card-fullwidth" id="hangoutsDetails-card23">
       <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM dd, yyyy \| hh:mm a'}}</div>
-      <ion-list id="hangoutDetails-list7">
-        <ion-item id="hangoutDetails-list-item39" class="cardtitle center">{{item.hangoutName}}</ion-item>
-        <ion-item class="item-avatar" id="hangoutDetails-list-item40">
-          <img src="img/Bne5LjbMSLKlVRcSwzCU_cartoonman.jpg">
+      <ion-list id="hangoutsDetails-list2">
+        <ion-item id="hangoutsDetails-list-item26" class="cardtitle center">{{item.hangoutName}}</ion-item>
+        <ion-item class="item-avatar" id="hangoutsDetails-list-item27">
+          <img src="img/QSfQoLI0QHWQVgkdJu2K_cartoonman.jpg">
           <h2>Hosted by: {{item.hostName}}</h2>
         </ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item49">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item28">
           <i class="icon ion-calendar"></i>{{item.hangoutDate | date:'EEEE, MMMM dd'}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item42">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item29">
           <i class="icon ion-android-time"></i>{{item.hangoutStartTime | date:'h:mm a'}} - {{item.hangoutEndTime | date:'h:mm a'}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item41">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item30">
           <i class="icon ion-location"></i>{{item.location}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item44">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
           <i class="icon ion-ios-people"></i>Max Guests: {{item.maxGuests}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item50" href="mailto:{{item.email}}">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item32">
           <i class="icon ion-email"></i>{{item.email}} </ion-item>
-        <ion-item class="item-icon-left" id="hangoutDetails-list-item47" href="tel:{{item.phoneNumber}} ">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item33">
           <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
       </ion-list>
     </div>
-    <div id="hangoutDetails-markdown22" class="show-list-numbers-and-dots">
+    <div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
       <p style="color:#000000;">{{item.description}} </p>
     </div>
   </ion-content>
