@@ -9811,18 +9811,9 @@ a.button {
 .center {
   text-align: center; }
 
-.left {
-  text-align: left; }
-
-.right {
-  text-align: right; }
-
 .assertive2 {
   background-color: #EF473A; }
 
 .cardtitle {
   background-color: #f1f1f1;
   font-weight: 600; }
-
-.smallFontSize {
-  font-size: 0.5em; }

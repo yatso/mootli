@@ -16,19 +16,19 @@ angular.module('app.routes', [])
     controller: 'hangoutsCtrl'
   })
 
-  .state('tabsController', {
-    url: '/page1',
-    templateUrl: 'templates/tabsController.html',
-    abstract:true
-  })
-
-  .state('hangoutDetails', {
+  .state('hangoutsDetails', {
     url: '/details',
 	params: {
 		item: ""		
 },
-    templateUrl: 'templates/hangoutDetails.html',
-    controller: 'hangoutDetailsCtrl'
+    templateUrl: 'templates/hangoutsDetails.html',
+    controller: 'hangoutsDetailsCtrl'
+  })
+
+  .state('tabsController', {
+    url: '/tabsController',
+    templateUrl: 'templates/tabsController.html',
+    abstract:true
   })
 
   .state('makeAHangout', {

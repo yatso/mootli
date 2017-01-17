@@ -2,7 +2,11 @@
 <html>
   <head>
    
-    <!-- Favicon link start-->  
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+		
+		<!-- Favicon link start-->  
     <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -10,12 +14,6 @@
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     <!-- Favicon link end-->
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-    
     
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
@@ -64,15 +62,19 @@
     <script src="js/routes.js"></script>
     
      
-    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
-     
-    <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
-     
     <script src="js/directives.js"></script>
+     
+    <script src="js/services.js"></script>
+     
+    <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+     
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+     
+    <script src="js/firebase.init.js"></script>
      
     <script src="js/hangouts.js"></script>
      
-    <script src="js/services.js"></script>
+    <script src="js/fblogin.js"></script>
     
 
     <!-- Only required for Tab projects w/ pages in multiple tabs 
@@ -82,12 +84,37 @@
   </head>
   <body ng-app="app" animation="slide-left-right-ios7">
   <div>
-  <div>
-    <ion-nav-bar class="bar-assertive">
-      <ion-nav-back-button></ion-nav-back-button>
-    </ion-nav-bar>
-    <ion-nav-view></ion-nav-view>
-  </div>
+  <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
+    <ion-side-menu-content>
+      <ion-nav-bar class="bar-assertive">
+        <ion-nav-back-button></ion-nav-back-button>
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+        </ion-nav-buttons>
+      </ion-nav-bar>
+      <ion-nav-view></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" id="side-menu21" style="background-color:#FAFAFA;">
+      <ion-header-bar class="bar-stable">
+        <div class="title">Menu</div>
+      </ion-header-bar>
+      <ion-content ng-controller="menuCtrl" padding="true" class="side-menu-left has-header ">
+        <div id="menu-container1" ng-show="!(fbUserData.user)" data-componentid="container1">
+          <button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>
+        </div>
+        <div id="menu-container2" ng-show="fbUserData.user" data-componentid="container2">
+          <ion-list id="menu-list5" data-componentid="list5">
+            <ion-item class="item-avatar" id="menu-list-item34" data-componentid="list-item34">
+              <img src="{{fbUserData.user.photoURL}}">
+              <h2>Welcome, {{fbUserData.user.displayName}}!</h2>
+            </ion-item>
+          </ion-list>
+          <button id="menu-button5" ng-click="fbUserData.signOut()" class="button button-positive  button-block button-outline" data-componentid="button5">Facebook Logout</button>
+          <button id="menu-button6" ng-click="fbUserData.deleteAccount()" class="button button-positive  button-block button-outline" data-componentid="button6">Delete Account</button>
+        </div>
+      </ion-content>
+    </ion-side-menu>
+  </ion-side-menus>
 </div>
   </body>
 </html>
