@@ -16,9 +16,9 @@
           <i class="icon ion-location"></i>{{item.location}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
           <i class="icon ion-ios-people"></i>Max Guests: {{item.maxGuests}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutsDetails-list-item32">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}">
           <i class="icon ion-email"></i>{{item.email}} </ion-item>
-        <ion-item class="item-icon-left" id="hangoutsDetails-list-item33">
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
           <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
       </ion-list>
     </div>
