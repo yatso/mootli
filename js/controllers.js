@@ -6,8 +6,8 @@ angular.module('app.controllers', [])
 
 function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 
-	$scope.items = Hangouts.items;
-	$scope.fbUserData = fbloginService.fbUserData;
+    $scope.items = Hangouts.items;
+    $scope.fbUserData = fbloginService.fbUserData;
 		
 	$scope.routeBasedOnUserStatus = function(userGoal, userGoalMsg, itemId) {
 		if ($scope.fbUserData.user && userGoal == 'make') {
