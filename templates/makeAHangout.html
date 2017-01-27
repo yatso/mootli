@@ -1,4 +1,7 @@
-<ion-view title="Make a Hangout" id="page8">
+<ion-view title="Make a Hangout" hide-back-button="true" id="page8">
+  <ion-nav-buttons side="left" class="has-header">
+    <button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
+  </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
     <form id="makeAHangout-form1" class="list">
       <ion-list id="makeAHangout-list4">
@@ -44,6 +47,6 @@
         </label>
       </ion-list>
     </form>
-    <a ui-sref="hangouts" id="makeAHangout-button2" ng-click="addItem()" class="button button-balanced button-large button-block">Make</a>
+    <a ui-sref="hangouts" id="makeAHangout-button2" ng-click="addItem()" class="button button-positive button-large button-block">Make</a>
   </ion-content>
 </ion-view>
