@@ -16,6 +16,12 @@ angular.module('app.routes', [])
     controller: 'hangoutsCtrl'
   })
 
+  .state('mootliFAQ', {
+    url: '/faq',
+    templateUrl: 'templates/mootliFAQ.html',
+    controller: 'mootliFAQCtrl'
+  })
+
   .state('hangoutsDetails', {
     url: '/details',
 	params: {
