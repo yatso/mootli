@@ -27,11 +27,11 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
 				console.log('User clicked cancel on ' + userGoal + ' Login Popup');
 			});
 	};
-	$scope.joinHangout = function(itemId) {
+	$scope.joinHangout = function(item) {
 		if (!this.checkLogin('joining a hangout')) {
 				return false;
 		}
-		$state.go('hangoutsDetails', { item: itemId });
+		$state.go('hangoutsDetails', { item: item });
 	};
 	$scope.makeHangout = function() {
 		if (!this.checkLogin('making a hangout')) {
@@ -81,7 +81,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 function ($scope, $stateParams, Hangouts) {
     
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
-    $scope.item = Hangouts.items.$getRecord($stateParams.item);
+    $scope.item = $stateParams.item;
 	console.log('in details ctrl:', $stateParams, $stateParams.item, $scope.item);
 
 }])
