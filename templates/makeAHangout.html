@@ -15,7 +15,7 @@
         </label>
         <label class="item item-input item-stacked-label" id="makeAHangout-input5">
           <span class="input-label">Max Guests</span>
-          <input type="number" placeholder="e.g., 3" ng-model="data.maxGuests">
+          <input type="number" placeholder="e.g., 3" ng-model="data.maxGuests" min="1">
         </label>
         <label class="item item-input item-stacked-label" id="makeAHangout-input6">
           <span class="input-label">Location</span>
@@ -23,7 +23,7 @@
         </label>
         <label class="item item-input item-stacked-label" id="makeAHangout-input7">
           <span class="input-label">Date</span>
-          <input type="date" placeholder="e.g., Board Game Night" ng-model="data.hangoutDate">
+          <input type="datetime-local" placeholder="" ng-model="data.hangoutDate">
         </label>
         <label class="item item-input item-stacked-label" id="makeAHangout-input8">
           <span class="input-label">Start Time</span>

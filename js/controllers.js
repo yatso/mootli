@@ -112,7 +112,7 @@ function ($scope, $stateParams, fbloginService) {
 				'maxGuests': 1
             }
 			$scope.addItem = function(){
-				Hangouts.addItem($scope.data.hostUid, $scope.data.hostPhotoURL, $scope.data.hangoutName, $scope.data.hostName, $scope.data.email, $scope.data.phoneNumber, $scope.data.location, $scope.data.hangoutDate, $scope.data.hangoutStartTime, $scope.data.hangoutEndTime, $scope.data.description, $scope.data.maxGuests);
+				Hangouts.addItem($scope.data);
 			}
 		} else {
 			// No user is signed in.
