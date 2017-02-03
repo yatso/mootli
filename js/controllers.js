@@ -9,15 +9,12 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
     $scope.items = Hangouts.items;
     $scope.fbUserData = fbloginService.fbUserData;
     $scope.mobileCheckService = mobileCheckService.check;
-		
-	$scope.routeBasedOnUserStatus = function(userGoal, userGoalMsg, itemId) {
-		if ($scope.fbUserData.user && userGoal == 'make') {
-			// route them to the make page
-			$state.go('makeAHangout');	
-		} else if ($scope.fbUserData.user && userGoal == 'join') {
-			// route them to the hangoutDetails page
-			$state.go('hangoutsDetails', { item: itemId });	
-		} else {
+	
+	$scope.checkLogin = function(userGoalMsg) {
+			console.log('checkLogin user:', $scope.fbUserData.user);
+			if ($scope.fbUserData.user) {
+					return true;
+			}
 			$ionicPopup.show({
 				template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>',
 				title: 'Please log in before ' + userGoalMsg,
@@ -29,7 +26,18 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
 			}).then(function() {
 				console.log('User clicked cancel on ' + userGoal + ' Login Popup');
 			});
-		}		
+	};
+	$scope.joinHangout = function(itemId) {
+		if (!this.checkLogin('joining a hangout')) {
+				return false;
+		}
+		$state.go('hangoutsDetails', { item: itemId });
+	};
+	$scope.makeHangout = function() {
+		if (!this.checkLogin('making a hangout')) {
+				return false;
+		}
+		$state.go('makeAHangout');
 	};
     
 }])
@@ -73,7 +81,8 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 function ($scope, $stateParams, Hangouts) {
     
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
-    $scope.item = Hangouts.items[Hangouts.items.$indexFor($stateParams.item)];
+    $scope.item = Hangouts.items.$getRecord($stateParams.item);
+	console.log('in details ctrl:', $stateParams, $stateParams.item, $scope.item);
 
 }])
       
