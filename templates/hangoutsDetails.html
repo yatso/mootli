@@ -28,5 +28,12 @@
     <div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
       <p style="color:#000000;">{{item.description}} </p>
     </div>
+		<div class="list">
+				<a class="item item-avatar" href="#" ng-repeat="guest in item.guests">
+					<img src="{{ guest.photoURL }}">
+					<h2>{{ guest.displayName }}</h2>
+					<p>Back off, man. I'm a super-duper uber booger.</p>
+				</a>
+		</div>
   </ion-content>
 </ion-view>
