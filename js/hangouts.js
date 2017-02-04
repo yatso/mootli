@@ -39,7 +39,7 @@ angular.module('hangouts', ['firebase'])
 						console.assert(items.indexOf(item) != -1);
 						// Check whether current user is already in guest list
 						if (isGuestOfHangout(item, user)) {
-								console.debug('join: Guest is already part of the guest, not doing anything');
+								console.debug('join: Guest is already part of the guest list, not doing anything');
 								return false;
 						}
 						console.debug('join: Adding current user to guest list');
@@ -51,6 +51,24 @@ angular.module('hangouts', ['firebase'])
 								photoURL: user.photoURL,
 								uid: user.uid
 						});
+						return items.$save(item);
+				},
+				leave: function(item) {
+						var user = fbloginService.fbUserData.user;
+						// We must be working with an object that's actually part of the firebaseArray
+						console.assert(items.indexOf(item) != -1);
+						console.assert(Array.isArray(item.guests));
+						// Check whether current user is in guest list
+						var guest = isGuestOfHangout(item, user);
+						console.log('guest:', guest);
+						if (!guest) {
+								console.debug('leave: Guest is NOT part of the guest list, not doing anything');
+								return false;
+						}
+						console.debug('leave: Removing current user from guest list');
+						var i = item.guests.indexOf(guest);
+						console.assert(i != -1);
+						item.guests.splice(i, 1); 
 						return items.$save(item);
 				}
     }

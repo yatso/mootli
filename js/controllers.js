@@ -78,15 +78,17 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
     
 }])
    
-.controller('hangoutsDetailsCtrl', ['$scope', '$stateParams', 'Hangouts', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('hangoutsDetailsCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, Hangouts) {
+function ($scope, $stateParams, Hangouts, fbloginService) {
     
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
+    $scope.user = fbloginService.fbUserData.user;
     $scope.item = $stateParams.item;
-	console.log('in details ctrl:', $stateParams, $stateParams.item, $scope.item);
-
+		$scope.leaveHangout = function() {
+				Hangouts.leave($scope.item);
+		};
 }])
       
 .controller('menuCtrl', ['$scope', '$stateParams', 'fbloginService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller

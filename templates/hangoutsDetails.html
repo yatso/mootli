@@ -29,11 +29,14 @@
       <p style="color:#000000;">{{item.description}} </p>
     </div>
 		<div class="list">
-				<a class="item item-avatar" href="#" ng-repeat="guest in item.guests">
+				<div class="item item-avatar item-button-right" ng-repeat="guest in item.guests">
 					<img src="{{ guest.photoURL }}">
 					<h2>{{ guest.displayName }}</h2>
 					<p>Back off, man. I'm a super-duper uber booger.</p>
-				</a>
+						<button class="button button-clear button-assertive" ng-show="guest.uid == user.uid" ng-click="leaveHangout()">
+							<i class="icon ion-close-circled"></i>
+						</button>
+				</div>
 		</div>
   </ion-content>
 </ion-view>
