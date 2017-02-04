@@ -33,6 +33,9 @@ angular.module('hangouts', ['firebase'])
                 'postDateTime': firebase.database.ServerValue.TIMESTAMP
             });
         },
+        delete: function(item){
+            return items.$remove(item);
+        },
 				join: function(item) {
 						var user = fbloginService.fbUserData.user;
 						// We must be working with an object that's actually part of the firebaseArray
