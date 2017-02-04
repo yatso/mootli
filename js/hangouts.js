@@ -12,17 +12,20 @@ angular.module('hangouts', ['firebase'])
 					// undefined or length 0
 						return false;
 				}
-				return hangout.guests.find(g => g.uid == guest.uid);
+				return hangout.guests.find(function(g) {
+					return g.uid == guest.uid;
+				});
 		}
     var hangouts = {
         'items': items,
         addItem: function(data){
+						var user = fbloginService.fbUserData.user;
             items.$add({
                 'hostUid': data.hostUid,
                 'hostPhotoURL': data.hostPhotoURL,
                 'hangoutName': data.hangoutName,
-                'hostName': data.hostName,
-                'email': data.email,
+                'hostName': user.displayName,
+                'email': user.email,
                 'phoneNumber': data.phoneNumber,
                 'location': data.location,
                 'hangoutDate': data.hangoutDate.getTime(),

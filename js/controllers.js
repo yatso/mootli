@@ -5,7 +5,7 @@ angular.module('app.controllers', [])
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
 function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, mobileCheckService) {
-
+		console.log('hangoutsCtrl:', $scope);
     $scope.items = Hangouts.items;
     $scope.fbUserData = fbloginService.fbUserData;
     $scope.mobileCheckService = mobileCheckService.check;
