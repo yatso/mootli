@@ -35,11 +35,11 @@
       <p style="color:#000000;">{{item.description}} </p>
     </div>
 		<div class="list">
-				<div class="item item-avatar item-button-right" ng-repeat="guest in item.guests">
+				<div class="item item-avatar item-button-right" ng-repeat="(guestUid, guest) in item.guests">
 					<img src="{{ guest.photoURL }}">
 					<h2>{{ guest.displayName }}</h2>
 					<p>Back off, man. I'm a super-duper uber booger.</p>
-						<button class="button button-clear button-assertive" ng-show="guest.uid == user.uid" ng-click="leaveHangout()">
+						<button class="button button-clear button-assertive" ng-show="guestUid == user.uid" ng-click="leaveHangout()">
 							<i class="icon ion-close-circled"></i>
 						</button>
 				</div>
