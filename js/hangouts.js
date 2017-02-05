@@ -62,7 +62,10 @@ angular.module('hangouts', ['firebase'])
 						}
 						console.debug('leave: Removing current user from guest list');
 						return currentUserGuestRef.remove();
-				}
+				},
+				getGuestCount: function(item) {
+						return Object.keys(item.guests || {}).length;
+				},
     }
     return exportAPI;
 }]);

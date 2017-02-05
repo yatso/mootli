@@ -42,6 +42,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
 		}
 		$state.go('makeAHangout');
 	};
+	$scope.getGuestCount = Hangouts.getGuestCount;
     
 }])
    
@@ -97,6 +98,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $state) {
 						$state.go('hangouts');
 				});
 		};
+		$scope.getGuestCount = Hangouts.getGuestCount;
 }])
       
 .controller('menuCtrl', ['$scope', '$stateParams', 'fbloginService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
