@@ -91,11 +91,13 @@ function ($scope, $stateParams, Hangouts, fbloginService, $state) {
 				Hangouts.leave($scope.item);
 		};
 		$scope.deleteHangout = function() {
-				if (!confirm('Delete Hangout?')) {
+				if (!confirm('Are you sure you want to delete the hangout?\nIt will be removed immediately.')) {
 						return false;
 				}
 				Hangouts.delete($scope.item).then(function() {
 						$state.go('hangouts');
+				}).catch(function() {
+						alert('There was an error deleting your hangout');
 				});
 		};
 		$scope.getGuestCount = Hangouts.getGuestCount;
