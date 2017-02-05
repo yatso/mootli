@@ -3,8 +3,9 @@ angular.module('hangouts', ['firebase'])
 .service('Hangouts', ['$firebaseArray', 'fbloginService',
 											function($firebaseArray, fbloginService){
     
-    var ref = firebase.database().ref().child('hangouts');
-    var items = $firebaseArray(ref);
+    var ref = firebase.database().ref()
+		var hangoutsRef = ref.child('hangouts');
+    var hangoutsArray = $firebaseArray(hangoutsRef);
 
 		function isGuestOfHangout(hangout, guest) {
 				console.debug('isGuestOfHangout(hangout, guest):', hangout, guest);
@@ -16,11 +17,11 @@ angular.module('hangouts', ['firebase'])
 					return g.uid == guest.uid;
 				});
 		}
-    var hangouts = {
-        'items': items,
+    var exportAPI = {
+        'items': hangoutsArray,
         addItem: function(data){
 						var user = fbloginService.fbUserData.user;
-            items.$add({
+            hangoutsArray.$add({
                 'hostUid': data.hostUid,
                 'hostPhotoURL': data.hostPhotoURL,
                 'hangoutName': data.hangoutName,
@@ -37,12 +38,12 @@ angular.module('hangouts', ['firebase'])
             });
         },
         delete: function(item){
-            return items.$remove(item);
+            return hangoutsArray.$remove(item);
         },
 				join: function(item) {
 						var user = fbloginService.fbUserData.user;
 						// We must be working with an object that's actually part of the firebaseArray
-						console.assert(items.indexOf(item) != -1);
+						console.assert(hangoutsArray.indexOf(item) != -1);
 						// Check whether current user is already in guest list
 						if (isGuestOfHangout(item, user)) {
 								console.debug('join: Guest is already part of the guest list, not doing anything');
@@ -57,12 +58,12 @@ angular.module('hangouts', ['firebase'])
 								photoURL: user.photoURL,
 								uid: user.uid
 						});
-						return items.$save(item);
+						return hangoutsArray.$save(item);
 				},
 				leave: function(item) {
 						var user = fbloginService.fbUserData.user;
 						// We must be working with an object that's actually part of the firebaseArray
-						console.assert(items.indexOf(item) != -1);
+						console.assert(hangoutsArray.indexOf(item) != -1);
 						console.assert(Array.isArray(item.guests));
 						// Check whether current user is in guest list
 						var guest = isGuestOfHangout(item, user);
@@ -75,8 +76,8 @@ angular.module('hangouts', ['firebase'])
 						var i = item.guests.indexOf(guest);
 						console.assert(i != -1);
 						item.guests.splice(i, 1); 
-						return items.$save(item);
+						return hangoutsArray.$save(item);
 				}
     }
-    return hangouts;
+    return exportAPI;
 }]);
