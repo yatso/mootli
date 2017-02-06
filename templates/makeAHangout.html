@@ -5,6 +5,11 @@
   <ion-content padding="true" class="has-header">
     <form id="makeAHangout-form1" class="list">
       <ion-list id="makeAHangout-list4">
+      	<ion-item class="item-avatar" id="hangouts-list-item12">
+					<img src="{{ currentUserPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
+					<h2>Hosted by: {{ currentUserDisplayName }}</h2>
+					<h2>{{ currentUserEmail }}</h2>
+        </ion-item>
         <label class="item item-input item-stacked-label" id="makeAHangout-input3">
           <span class="input-label">Hangout Name</span>
           <input type="text" placeholder="e.g., Board Game Night" ng-model="data.hangoutName">
@@ -31,7 +36,7 @@
         </label>
         
         <label class="item item-input item-stacked-label" id="makeAHangout-input12">
-          <span class="input-label">Your number? (for guest contact)</span>
+          <span class="input-label">Your number (for guest contact)</span>
           <input type="tel" placeholder="e.g., 408-323-1222" ng-model="data.phoneNumber">
         </label>
       </ion-list>
