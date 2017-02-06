@@ -1,6 +1,6 @@
 <ion-view title="Hangouts" hide-back-button="true" id="page2" style="background-color:#FAFAFA;">
   <ion-nav-buttons side="right" class="has-header">
-    <button class="button button-stable icon ion-android-add" ng-click="routeBasedOnUserStatus('make', 'making a hangout')"> Make</button>
+    <button class="button button-stable icon ion-android-add" ng-click="makeHangout()"> Make</button>
   </ion-nav-buttons>
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
     <div class="spacer" style="width: 300px; height: 19px;"></div>
@@ -17,7 +17,7 @@
         <div class="item item-body" id="hangouts-list-item-container4">
           <ion-list id="hangouts-list6">
             <ion-item class="item-avatar" id="hangouts-list-item12">
-              <img src="img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg">
+              <img src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
               <h2>Hosted by: {{item.hostName}}</h2>
             </ion-item>
             <ion-item class="item-icon-left" id="hangouts-list-item13">
@@ -27,10 +27,10 @@
             <ion-item class="item-icon-left" id="hangouts-list-item16">
               <i class="icon ion-location"></i>{{item.location}}</ion-item>
             <ion-item class="item-icon-left" id="hangouts-list-item17">
-              <i class="icon ion-ios-people"></i>Max Guests: {{item.maxGuests}}</ion-item>
+              <i class="icon ion-ios-people"></i>Guests: {{getGuestCount(item)}}/{{item.maxGuests}}</ion-item>
             <ion-item id="hangouts-list-item18">{{item.description}}</ion-item>
           </ion-list>
-          <button id="hangouts-button1" ng-click="routeBasedOnUserStatus('join', 'joining a hangout', item.$id)" class="button button-positive button-large button-block">Join</button>
+          <button id="hangouts-button1" ng-click="joinHangout(item)" class="button button-positive button-large button-block">Join</button>
         </div>
       </ion-list>
     </div>

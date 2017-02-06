@@ -18,15 +18,31 @@
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item30">
           <i class="icon ion-location"></i>{{item.location}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
-          <i class="icon ion-ios-people"></i>Max Guests: {{item.maxGuests}}</ion-item>
+          <i class="icon ion-ios-people"></i>Guests: {{getGuestCount(item)}}/{{item.maxGuests}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}">
           <i class="icon ion-email"></i>{{item.email}} </ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
           <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item34">
+          <i class="icon ion-close-circled"></i>
+						<button class="button button-block button-assertive" ng-click="deleteHangout()">
+							Delete Hangout
+						</button>
+          </ion-item>
       </ion-list>
     </div>
     <div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
       <p style="color:#000000;">{{item.description}} </p>
     </div>
+		<div class="list">
+				<div class="item item-avatar item-button-right" ng-repeat="(guestUid, guest) in item.guests">
+					<img src="{{ guest.photoURL }}">
+					<h2>{{ guest.displayName }}</h2>
+					<p>Back off, man. I'm a super-duper uber booger.</p>
+						<button class="button button-clear button-assertive" ng-show="guestUid == user.uid" ng-click="leaveHangout()">
+							<i class="icon ion-close-circled"></i>
+						</button>
+				</div>
+		</div>
   </ion-content>
 </ion-view>
