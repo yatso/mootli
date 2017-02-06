@@ -11,10 +11,8 @@
           <img src="img/QSfQoLI0QHWQVgkdJu2K_cartoonman.jpg">
           <h2>Hosted by: {{item.hostName}}</h2>
         </ion-item>
-        <ion-item class="item-icon-left" id="hangoutsDetails-list-item28">
-          <i class="icon ion-calendar"></i>{{item.hangoutDate | date:'EEEE, MMMM dd'}}</ion-item>
-        <ion-item class="item-icon-left" id="hangoutsDetails-list-item29">
-          <i class="icon ion-android-time"></i>{{item.hangoutStartTime | date:'h:mm a'}} - {{item.hangoutEndTime | date:'h:mm a'}}</ion-item>
+       	<ion-item class="item-icon-left" id="hangoutsDetails-list-item29">
+          <i class="icon ion-calendar"></i>{{item.hangoutStartTime | date:'EEE M/d &middot; h:mma'}} - {{item.hangoutEndTime | date:'h:mma'}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item30">
           <i class="icon ion-location"></i>{{item.location}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">

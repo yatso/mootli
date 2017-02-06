@@ -26,7 +26,6 @@ angular.module('hangouts', ['firebase'])
                 'email': user.email,
                 'phoneNumber': data.phoneNumber,
                 'location': data.location,
-                'hangoutDate': data.hangoutDate.getTime(),
                 'hangoutStartTime': data.hangoutStartTime.getTime(),
                 'hangoutEndTime': data.hangoutEndTime.getTime(),
                 'description': data.description,

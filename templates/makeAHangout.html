@@ -21,18 +21,15 @@
           <span class="input-label">Location</span>
           <input type="text" placeholder="e.g., Game Castle, Santa Clara, CA" ng-model="data.location">
         </label>
-        <label class="item item-input item-stacked-label" id="makeAHangout-input7">
-          <span class="input-label">Date</span>
-          <input type="date" placeholder="" ng-model="data.hangoutDate">
-        </label>
         <label class="item item-input item-stacked-label" id="makeAHangout-input8">
-          <span class="input-label">Start Time</span>
-          <input type="time" placeholder="" ng-model="data.hangoutStartTime">
+          <span class="input-label">Start Date/Time</span>
+          <input type="datetime-local" value="2013-10-09T15:38:00" ng-model="data.hangoutStartTime">
         </label>
         <label class="item item-input item-stacked-label" id="makeAHangout-input9">
-          <span class="input-label">End Time</span>
-          <input type="time" placeholder="" ng-model="data.hangoutEndTime">
+          <span class="input-label">End Date/Time</span>
+          <input type="datetime-local" value="2013-10-09T15:38:00" ng-model="data.hangoutEndTime">
         </label>
+        
         <label class="item item-input item-stacked-label" id="makeAHangout-input12">
           <span class="input-label">Your number? (for guest contact)</span>
           <input type="tel" placeholder="e.g., 408-323-1222" ng-model="data.phoneNumber">
