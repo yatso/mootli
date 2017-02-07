@@ -123,6 +123,11 @@ function ($scope, $stateParams, fbloginService) {
 			$scope.currentUserEmail = user.email;
 			$scope.currentUserPhotoURL = user.photoURL;
 			
+			var defaultStart = new Date();
+			defaultStart.setSeconds(0);
+			defaultStart.setMilliseconds(0);
+			var defaultEnd = new Date(defaultStart.valueOf() + 60*60*1000);
+			
 			$scope.data = {
 				'hostUid': $scope.currentUserUid,
 				'hostPhotoURL': $scope.currentUserPhotoURL,
@@ -131,15 +136,15 @@ function ($scope, $stateParams, fbloginService) {
 				'hangoutName': '',
 				'phoneNumber': '',
 				'location': '',
-				'hangoutDate': '',
-				'hangoutStartTime': '',
-				'hangoutEndTime': '',
+				'hangoutStartTime': defaultStart,
+				'hangoutEndTime': defaultEnd,
 				'description': '',
 				'maxGuests': 1
             }
 			$scope.addItem = function(){
 				Hangouts.addItem($scope.data);
 			}
+			console.log('scope:', $scope.data);
 		} else {
 			// No user is signed in.
 		}
