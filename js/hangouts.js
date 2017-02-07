@@ -30,8 +30,10 @@ angular.module('hangouts', ['firebase'])
                 'hangoutEndTime': data.hangoutEndTime.getTime(),
                 'description': data.description,
                 'maxGuests': data.maxGuests,
-                'postDateTime': firebase.database.ServerValue.TIMESTAMP
-            });
+                'postDateTime': firebase.database.ServerValue.TIMESTAMP,
+            }).then(hangoutSnapshot => {
+							this.join(hangoutsArray.$getRecord(hangoutSnapshot.key));
+						});
         },
         delete: function(item){
             return hangoutsArray.$remove(item);
