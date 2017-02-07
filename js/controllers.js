@@ -31,6 +31,9 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
 		if (!this.checkLogin('joining a hangout')) {
 				return false;
 		}
+		if ($scope.getGuestCount(item) >= item.maxGuests) {
+				return false;
+		}
 		// Note: Even if the join fails (due to network connection, etc.), this will still bring the user to the detail page
 		// If that's not desired, use the returned Promise from join() to change state only upon resolve
 		Hangouts.join(item);
@@ -139,7 +142,7 @@ function ($scope, $stateParams, fbloginService) {
 				'hangoutStartTime': defaultStart,
 				'hangoutEndTime': defaultEnd,
 				'description': '',
-				'maxGuests': 1
+				'maxGuests': 2
             }
 			$scope.addItem = function(){
 				Hangouts.addItem($scope.data);
