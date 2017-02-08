@@ -106,6 +106,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $state) {
 				});
 		};
 		$scope.getGuestCount = Hangouts.getGuestCount;
+		$scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
 }])
       
 .controller('menuCtrl', ['$scope', '$stateParams', 'fbloginService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
