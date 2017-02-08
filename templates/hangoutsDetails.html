@@ -3,9 +3,9 @@
     <button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
   </ion-nav-buttons>
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
-   	<div class="center" style="background-color:#4CAF50; border: 2px solid #8BC34A; border-radius: 5px; margin-top:20px; padding: 10px;">
+   	<div class="center" style="border: 2px solid black; border-radius: 5px; margin-top:20px; padding: 10px;">
    		<h3>
-   			<span style="color: #CDDC39;">Thanks for joining. Welcome to the Hangout!</span>
+   			<span style="color: black;">Thanks for joining. Welcome to the Hangout!</span>
 			</h3>
    	</div>
     <div class="list card manual-card" id="hangoutsDetails-card23">
@@ -33,9 +33,12 @@
 						</button>
           </ion-item>
       </ion-list>
-      <ion-item class="item-icon-left" id="hangoutsDetails-list-item34">
-         		<button id="hangouts-button1" ng-click="joinHangout(item)" class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests">Join</button>
-          </ion-item>
+				<ion-item>
+							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)">Join</button>
+				</ion-item>
+     		<ion-item>
+							<button class="button button-assertive button-large button-block" ng-click="leaveHangout()">Leave</button>
+				</ion-item>
       </ion-list>
     </div>
     <div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
