@@ -35,9 +35,6 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
 		if (!this.checkLogin('joining a hangout')) {
 				return false;
 		}
-		if ($scope.getGuestCount(item) >= item.maxGuests) {
-				return false;
-		}
 		// Note: Even if the join fails (due to network connection, etc.), this will still bring the user to the detail page
 		// If that's not desired, use the returned Promise from join() to change state only upon resolve
 		Hangouts.join(item);
@@ -94,6 +91,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $state) {
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
     $scope.user = fbloginService.fbUserData.user;
     $scope.item = $stateParams.item;
+		$scope.joinHangout = Hangouts.join;
 		$scope.leaveHangout = function() {
 				Hangouts.leave($scope.item);
 		};
