@@ -10,10 +10,10 @@
     <div id="hangouts-markdown12" style="text-align:center;" class="show-list-numbers-and-dots">
       <p style="color:#575757;">Showing the latest hangouts near you</p>
     </div>
-    <div class="list card" id="hangouts-card22" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
+    <div ng-click="viewHangoutDetails(item)" class="list card" id="hangouts-card22" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
       <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM d, yyyy \| h:mm a'}}</div>
       <ion-list id="hangouts-list1">
-        <ion-item ng-click="viewHangoutDetails(item)" id="hangouts-list-item15" class="item-icon-right cardtitle center">
+        <ion-item id="hangouts-list-item15" class="item-icon-right cardtitle center">
         	{{item.hangoutName}}
         	<i class="icon ion-ios-arrow-right"></i>
         </ion-item>
@@ -30,7 +30,8 @@
             <ion-item class="item-icon-left" id="hangouts-list-item17">
               <i class="icon ion-ios-people"></i>Guests: {{getGuestCount(item)}}/{{item.maxGuests}}</ion-item>
           </ion-list>
-          <button id="hangouts-button1" ng-click="joinHangout(item)" class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests">Join</button>
+<!--          Join Button on hangout page disabled for now to reduce confusion for users-->
+<!--          <button id="hangouts-button1" ng-click="joinHangout(item)" class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests">Join</button>-->
         </div>
       </ion-list>
     </div>
