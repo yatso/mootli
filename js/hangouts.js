@@ -42,7 +42,7 @@ angular.module('hangouts', ['firebase'])
 						var user = fbloginService.fbUserData.user;
 						var currentUserGuestRef = hangoutsRef.child(item.$id + '/guests/' + user.uid);
 						// Check whether the hangout is full. Normally shouldn't happen since the view takes care of this logic
-						if ($scope.getGuestCount(item) >= item.maxGuests) {
+						if (this.getGuestCount(item) >= item.maxGuests) {
 								console.warn('Hangout is already full');
 								return false;
 						}
