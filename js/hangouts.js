@@ -7,13 +7,6 @@ angular.module('hangouts', ['firebase'])
 		var hangoutsRef = ref.child('hangouts');
     var hangoutsArray = $firebaseArray(hangoutsRef);
 
-		function isGuestOfHangout(hangout, guest) {
-				console.debug('isGuestOfHangout(hangout, guest):', hangout, guest);
-				if (!hangout.guests) {
-						return false;
-				}
-				return hangout.guests.hasOwnProperty(guest.uid);
-		}
     var exportAPI = {
         'items': hangoutsArray,
         addItem: function(data){
@@ -38,6 +31,13 @@ angular.module('hangouts', ['firebase'])
         delete: function(item){
             return hangoutsArray.$remove(item);
         },
+				isGuestOfHangout: function(hangout, guest) {
+						console.debug('isGuestOfHangout(hangout, guest):', hangout, guest);
+						if (!hangout.guests) {
+								return false;
+						}
+						return hangout.guests.hasOwnProperty(guest.uid);
+				},
 				join: function(item) {
 						var user = fbloginService.fbUserData.user;
 						var currentUserGuestRef = hangoutsRef.child(item.$id + '/guests/' + user.uid);
@@ -47,7 +47,7 @@ angular.module('hangouts', ['firebase'])
 								return false;
 						}
 						// Check whether current user is already in guest list
-						if (isGuestOfHangout(item, user)) {
+						if (this.isGuestOfHangout(item, user)) {
 								console.debug('join: Guest is already part of the guest list, not doing anything');
 								return false;
 						}
@@ -62,7 +62,7 @@ angular.module('hangouts', ['firebase'])
 						var user = fbloginService.fbUserData.user;
 						var currentUserGuestRef = hangoutsRef.child(item.$id + '/guests/' + user.uid);
 						// Check whether current user is in guest list
-						if (!isGuestOfHangout(item, user)) {
+						if (!this.isGuestOfHangout(item, user)) {
 								console.debug('leave: Guest is NOT part of the guest list, not doing anything');
 								return false;
 						}

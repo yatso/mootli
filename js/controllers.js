@@ -91,7 +91,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $state) {
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
     $scope.user = fbloginService.fbUserData.user;
     $scope.item = $stateParams.item;
-		$scope.joinHangout = Hangouts.join;
+		$scope.joinHangout = Hangouts.join.bind(Hangouts);
 		$scope.leaveHangout = function() {
 				Hangouts.leave($scope.item);
 		};
