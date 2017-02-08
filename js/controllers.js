@@ -24,8 +24,12 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
 					{ text: 'Cancel' }
 				]
 			}).then(function() {
-				console.log('User clicked cancel on ' + userGoal + ' Login Popup');
+				console.log('User clicked cancel on Login Popup');
 			});
+	};
+	$scope.viewHangoutDetails = function(item) {
+		// No user login is checked. Logged out user can still see details page.
+		$state.go('hangoutsDetails', { item: item });
 	};
 	$scope.joinHangout = function(item) {
 		if (!this.checkLogin('joining a hangout')) {

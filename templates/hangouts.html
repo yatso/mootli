@@ -13,7 +13,10 @@
     <div class="list card" id="hangouts-card22" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
       <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM d, yyyy \| h:mm a'}}</div>
       <ion-list id="hangouts-list1">
-        <ion-item id="hangouts-list-item15" class="cardtitle center">{{item.hangoutName}}</ion-item>
+        <ion-item ng-click="viewHangoutDetails(item)" id="hangouts-list-item15" class="item-icon-right cardtitle center">
+        	{{item.hangoutName}}
+        	<i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
         <div class="item item-body" id="hangouts-list-item-container4">
           <ion-list id="hangouts-list6">
             <ion-item class="item-avatar" id="hangouts-list-item12">
