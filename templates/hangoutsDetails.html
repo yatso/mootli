@@ -3,7 +3,12 @@
     <button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
   </ion-nav-buttons>
   <ion-content padding="true" class=" manual-remove-top-padding has-header">
-    <div class="list card manual-card-fullwidth" id="hangoutsDetails-card23">
+   	<div class="center" style="background-color:#4CAF50; border: 2px solid #8BC34A; border-radius: 5px; margin-top:20px; padding: 10px;">
+   		<h3>
+   			<span style="color: #CDDC39;">Thanks for joining. Welcome to the Hangout!</span>
+			</h3>
+   	</div>
+    <div class="list card manual-card" id="hangoutsDetails-card23">
       <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM dd, yyyy \| hh:mm a'}}</div>
       <ion-list id="hangoutsDetails-list2">
         <ion-item id="hangoutsDetails-list-item26" class="cardtitle center">{{item.hangoutName}}</ion-item>
