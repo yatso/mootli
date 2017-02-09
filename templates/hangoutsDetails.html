@@ -8,6 +8,11 @@
    			<span style="color: black;">Thanks for joining. Welcome to the Hangout!</span>
 			</h3>
    	</div>
+   	<div>
+   		<ion-item ng-if="item.hostUid == user.uid" class="item-borderless item-icon-right">
+   			<i ng-click="deleteHangout()" class="icon ion-ios-close-outline"></i>
+   		</ion-item>
+   	</div>
     <div class="list card manual-card" id="hangoutsDetails-card23">
       <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM dd, yyyy \| hh:mm a'}}</div>
       <ion-list id="hangoutsDetails-list2">
@@ -26,12 +31,6 @@
           <i class="icon ion-email"></i>{{item.email}} </ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
           <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
-        <ion-item class="item-icon-left" id="hangoutsDetails-list-item34">
-          <i class="icon ion-close-circled"></i>
-						<button class="button button-block button-assertive" ng-click="deleteHangout()">
-							Delete Hangout
-						</button>
-          </ion-item>
       </ion-list>
 				<ion-item ng-show="(user) && (item.hostUid != user.uid)">
 							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="(user) && (!isGuestOfHangout(item, user)) ">Join</button>
