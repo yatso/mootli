@@ -27,14 +27,14 @@
           <i class="icon ion-location"></i>{{item.location}}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
           <i class="icon ion-ios-people"></i>Guests: {{getGuestCount(item)}} / {{item.maxGuests}}</ion-item>
-        <ion-item ng-if="(user) && (isGuestOfHangout(item, user))" class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}">
+        <ion-item ng-if="isGuestOfHangout(item, user)" class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}">
           <i class="icon ion-email"></i>{{item.email}} </ion-item>
-        <ion-item ng-if="(user) && (isGuestOfHangout(item, user))" class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
+        <ion-item ng-if="isGuestOfHangout(item, user)" class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
           <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
       </ion-list>
 				<ion-item ng-show="(user) && (item.hostUid != user.uid)">
-							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="(user) && (!isGuestOfHangout(item, user)) ">Join</button>
-							<button class="button button-assertive button-large button-block" ng-click="leaveHangout()" ng-show="(user) && (isGuestOfHangout(item, user))">Leave</button>
+							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="!isGuestOfHangout(item, user)">Join</button>
+							<button class="button button-assertive button-large button-block" ng-click="leaveHangout()" ng-show="isGuestOfHangout(item, user)">Leave</button>
 				</ion-item>
       </ion-list>
     </div>
