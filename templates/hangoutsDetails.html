@@ -31,6 +31,13 @@
           <i class="icon ion-email"></i>{{item.email}} </ion-item>
         <ion-item ng-if="isGuestOfHangout(item, user)" class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
           <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
+					<ion-item class="item item-text-wrap">
+						<div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
+							<p>
+							{{item.description}}
+							</p>
+						</div>
+					</ion-item>
       </ion-list>
 				<ion-item ng-show="(user) && (item.hostUid != user.uid)">
 							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="!isGuestOfHangout(item, user)">Join</button>
@@ -38,9 +45,7 @@
 				</ion-item>
       </ion-list>
     </div>
-    <div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
-      <p style="color:#000000;">{{item.description}} </p>
-    </div>
+
 		<div class="list">
 				<div class="item item-avatar item-button-right" ng-repeat="(guestUid, guest) in item.guests">
 					<img src="{{ guest.photoURL }}">
