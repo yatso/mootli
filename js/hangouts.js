@@ -70,6 +70,9 @@ angular.module('hangouts', ['firebase'])
 						return currentUserGuestRef.remove();
 				},
 				getGuestCount: function(item) {
+						if (!item) {
+								return 0;
+						}
 						return Object.keys(item.guests || {}).length;
 				},
     }

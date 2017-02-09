@@ -23,7 +23,7 @@ angular.module('app.routes', [])
   })
 
   .state('hangoutsDetails', {
-    url: '/details',
+    url: '/details/:hangoutId',
 	params: {
 		item: ""		
 },
