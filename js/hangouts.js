@@ -32,7 +32,7 @@ angular.module('hangouts', ['firebase'])
             return hangoutsArray.$remove(item);
         },
 				isGuestOfHangout: function(hangout, guest) {
-						console.debug('isGuestOfHangout(hangout, guest):', hangout, guest);
+//						console.debug('isGuestOfHangout(hangout, guest):', hangout, guest);
 						if (!hangout.guests) {
 								return false;
 						}
