@@ -152,10 +152,7 @@ function ($scope, $stateParams, fbloginService) {
     // everything is wrapped in onAuthStateChanged so that user data is generated only after the observer detects that they are logged in. Solves alot of user === 'null' issues.
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-			$scope.currentUserUid = user.uid;
-			$scope.currentUserDisplayName = user.displayName;
-			$scope.currentUserEmail = user.email;
-			$scope.currentUserPhotoURL = user.photoURL;
+			$scope.user = user;
 			
 			var defaultStart = new Date();
 			defaultStart.setSeconds(0);
@@ -163,8 +160,8 @@ function ($scope, $stateParams, fbloginService) {
 			var defaultEnd = new Date(defaultStart.valueOf() + 60*60*1000);
 			
 			$scope.data = {
-				'hostUid': $scope.currentUserUid,
-				'hostPhotoURL': $scope.currentUserPhotoURL,
+				'hostUid': user.uid,
+				'hostPhotoURL': user.photoURL,
 				'hostName': '',
 				'email': '',
 				'hangoutName': '',

@@ -6,9 +6,9 @@
     <form id="makeAHangout-form1" class="list">
       <ion-list id="makeAHangout-list4">
       	<ion-item class="item-avatar" id="hangouts-list-item12">
-					<img ng-src="{{ currentUserPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
-					<h2>Hosted by: {{ currentUserDisplayName }}</h2>
-					<h2>{{ currentUserEmail }}</h2>
+					<img ng-src="{{ user.photoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
+					<h2>Hosted by: {{ user.displayName }}</h2>
+					<h2>{{ user.email }}</h2>
         </ion-item>
         <label class="item item-input item-stacked-label" id="makeAHangout-input3">
           <span class="input-label">Hangout Name</span>
