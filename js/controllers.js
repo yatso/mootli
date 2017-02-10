@@ -83,14 +83,34 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
     
 }])
    
-.controller('hangoutsDetailsCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('hangoutsDetailsCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, Hangouts, fbloginService, $state) {
+function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
     
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
     $scope.user = fbloginService.fbUserData.user;
     $scope.item = $stateParams.item;
+		$scope.fbUserData = fbloginService.fbUserData;
+	
+		$scope.checkLogin = function(userGoalMsg) {
+				console.log('checkLogin user:', $scope.fbUserData.user);
+				if ($scope.fbUserData.user) {
+						return true;
+				}
+				$ionicPopup.show({
+					template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>',
+					title: 'Please log in before ' + userGoalMsg,
+					subTitle: '',
+					scope: $scope,
+					buttons: [
+						{ text: 'Cancel' }
+					]
+				}).then(function() {
+					console.log('User clicked cancel on Login Popup');
+				});
+		};
+	
 		$scope.joinHangout = Hangouts.join.bind(Hangouts);
 		$scope.leaveHangout = function() {
 				Hangouts.leave($scope.item);
