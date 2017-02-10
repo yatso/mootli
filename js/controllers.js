@@ -86,7 +86,6 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
     
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
 		console.debug('hangoutsDetailsCtrl ($scope, $stateParams, Hangouts, fbloginService, $state): ', this, arguments);
-    $scope.user = fbloginService.fbUserData.user;
     $scope.item = $stateParams.item;
 		$scope.fbUserData = fbloginService.fbUserData;
 	
