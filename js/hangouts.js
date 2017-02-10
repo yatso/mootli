@@ -33,7 +33,7 @@ angular.module('hangouts', ['firebase'])
         },
 				isGuestOfHangout: function(hangout, guest) {
 //						console.debug('isGuestOfHangout(hangout, guest):', hangout, guest);
-						if (!guest || !hangout.guests) {
+						if (!guest || !hangout || !hangout.guests) {
 								return false;
 						}
 						return hangout.guests.hasOwnProperty(guest.uid);

@@ -86,7 +86,6 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
     
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
 		console.debug('hangoutsDetailsCtrl ($scope, $stateParams, Hangouts, fbloginService, $state): ', this, arguments);
-    $scope.item = $stateParams.item;
 		$scope.fbUserData = fbloginService.fbUserData;
 	
 		$scope.checkLogin = function(userGoalMsg) {
@@ -123,13 +122,8 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 		};
 		$scope.getGuestCount = Hangouts.getGuestCount;
 		$scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
-	
 
 		Hangouts.items.$loaded(function(items) {
-				// Once items are loaded, check if item is already populated. If not, get it from items using the hangoutId
-				if ($scope.item) {
-					return;
-				}
 				var item = items.$getRecord($stateParams.hangoutId);
 				if (!item) {
 						console.warn('No hangout with id: ', $stateParams.hangoutId);
