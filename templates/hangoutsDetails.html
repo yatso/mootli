@@ -52,7 +52,7 @@
 		 		</div>
 				<div class="item item-avatar item-button-right" ng-repeat="(guestUid, guest) in item.guests">
 					<img src="{{ guest.photoURL }}">
-					<h2>{{ guest.displayName }}</h2>
+					<h2>{{ guest.displayName }} <span ng-show="guestUid == item.hostUid">(Host)</span></h2>
 					<p>Back off, man. I'm a super-duper uber booger.</p>
 				</div>
 		</div>
