@@ -27,10 +27,6 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
 				console.log('User clicked cancel on Login Popup');
 			});
 	};
-	$scope.viewHangoutDetails = function(item) {
-		// No user login is checked. Logged out user can still see details page.
-		$state.go('hangoutsDetails', { item: item });
-	};
 	$scope.joinHangout = function(item) {
 		if (!this.checkLogin('joining a hangout')) {
 				return false;
@@ -89,8 +85,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
     
     // $indexFor takes the itemId(passed from $stateParams from the hangouts page) and finds the firebase array position so that we can get the corresponding item object from firebase.
-    $scope.user = fbloginService.fbUserData.user;
-    $scope.item = $stateParams.item;
+		console.debug('hangoutsDetailsCtrl ($scope, $stateParams, Hangouts, fbloginService, $state): ', this, arguments);
 		$scope.fbUserData = fbloginService.fbUserData;
 	
 		$scope.checkLogin = function(userGoalMsg) {
@@ -111,7 +106,12 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 				});
 		};
 	
-		$scope.joinHangout = Hangouts.join.bind(Hangouts);
+		$scope.joinHangout = function(item) {
+				if (!this.checkLogin('joining a hangout')) {
+					return false
+				};
+				Hangouts.join(item);
+		};
 		$scope.leaveHangout = function() {
 				Hangouts.leave($scope.item);
 		};
@@ -127,6 +127,14 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 		};
 		$scope.getGuestCount = Hangouts.getGuestCount;
 		$scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
+
+		Hangouts.items.$loaded(function(items) {
+				var item = items.$getRecord($stateParams.hangoutId);
+				if (!item) {
+						console.warn('No hangout with id: ', $stateParams.hangoutId);
+				}
+				$scope.item = item;
+		});
 }])
       
 .controller('menuCtrl', ['$scope', '$stateParams', 'fbloginService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
