@@ -18,7 +18,7 @@
       <ion-list id="hangoutsDetails-list2">
         <ion-item id="hangoutsDetails-list-item26" class="cardtitle center">{{ item.hangoutName }}</ion-item>
         <ion-item class="item-avatar" id="hangoutsDetails-list-item27">
-          <img src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
+          <img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
           <h2>Hosted by: {{ item.hostName }}</h2>
         </ion-item>
        	<ion-item class="item-icon-left" id="hangoutsDetails-list-item29">
@@ -51,7 +51,7 @@
 					Guest List
 		 		</div>
 				<div class="item item-avatar item-button-right" ng-repeat="(guestUid, guest) in item.guests">
-					<img src="{{ guest.photoURL }}">
+					<img ng-src="{{ guest.photoURL }}">
 					<h2>{{ guest.displayName }} <span ng-show="guestUid == item.hostUid">(Host)</span></h2>
 					<p>Joined {{ guest.timestamp | date:'EEE M/d @ h:mma'}}</p>
 				</div>
