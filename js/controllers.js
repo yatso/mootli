@@ -106,7 +106,12 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 				});
 		};
 	
-		$scope.joinHangout = Hangouts.join.bind(Hangouts);
+		$scope.joinHangout = function(item) {
+				if (!this.checkLogin('joining a hangout')) {
+					return false
+				};
+				Hangouts.join(item);
+		};
 		$scope.leaveHangout = function() {
 				Hangouts.leave($scope.item);
 		};

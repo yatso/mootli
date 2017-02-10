@@ -39,12 +39,9 @@
 						</div>
 					</ion-item>
       </ion-list>
-				<ion-item ng-show="(fbUserData.user) && (item.hostUid != fbUserData.user.uid)">
-							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="!isGuestOfHangout(item, fbUserData.user)">Join</button>
+				<ion-item ng-show="item.hostUid != fbUserData.user.uid">
+							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="!fbUserData.user || !isGuestOfHangout(item, fbUserData.user)">Join</button>
 							<button class="button button-assertive button-large button-block" ng-click="leaveHangout()" ng-show="isGuestOfHangout(item, fbUserData.user)">Leave</button>
-				</ion-item>
-				<ion-item ng-if="!(fbUserData.user)">
-							<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="checkLogin('joining a hangout')">Join</button>
 				</ion-item>
       </ion-list>
     </div>
