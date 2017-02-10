@@ -14,27 +14,27 @@
    		</ion-item>
    	</div>
     <div class="list card manual-card" id="hangoutsDetails-card23">
-      <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM dd, yyyy \| hh:mm a'}}</div>
+      <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{ item.postDateTime | date:'MMM d, yyyy \| h:mm a' }}</div>
       <ion-list id="hangoutsDetails-list2">
-        <ion-item id="hangoutsDetails-list-item26" class="cardtitle center">{{item.hangoutName}}</ion-item>
+        <ion-item id="hangoutsDetails-list-item26" class="cardtitle center">{{ item.hangoutName }}</ion-item>
         <ion-item class="item-avatar" id="hangoutsDetails-list-item27">
           <img src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
-          <h2>Hosted by: {{item.hostName}}</h2>
+          <h2>Hosted by: {{ item.hostName }}</h2>
         </ion-item>
        	<ion-item class="item-icon-left" id="hangoutsDetails-list-item29">
-          <i class="icon ion-calendar"></i>{{item.hangoutStartTime | date:'EEE M/d &middot; h:mma'}} - {{item.hangoutEndTime | date:'h:mma'}}</ion-item>
+          <i class="icon ion-calendar"></i>{{ item.hangoutStartTime | date:'EEE M/d &middot; h:mma' }} - {{ item.hangoutEndTime | date:'h:mma' }}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item30">
-          <i class="icon ion-location"></i>{{item.location}}</ion-item>
+          <i class="icon ion-location"></i>{{ item.location }}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
-          <i class="icon ion-ios-people"></i>Guests: {{getGuestCount(item)}} / {{item.maxGuests}}</ion-item>
+          <i class="icon ion-ios-people"></i>Guests: {{ getGuestCount(item) }} / {{ item.maxGuests }}</ion-item>
         <ion-item ng-if="isGuestOfHangout(item, user)" class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}">
-          <i class="icon ion-email"></i>{{item.email}} </ion-item>
+          <i class="icon ion-email"></i>{{ item.email }} </ion-item>
         <ion-item ng-if="isGuestOfHangout(item, user)" class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
-          <i class="icon ion-android-call"></i>{{item.hostName}} {{item.phoneNumber}} </ion-item>
+          <i class="icon ion-android-call"></i>{{ item.hostName }} {{ item.phoneNumber }} </ion-item>
 					<ion-item class="item item-text-wrap">
 						<div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
 							<p>
-							{{item.description}}
+							{{ item.description }}
 							</p>
 						</div>
 					</ion-item>
@@ -53,7 +53,7 @@
 				<div class="item item-avatar item-button-right" ng-repeat="(guestUid, guest) in item.guests">
 					<img src="{{ guest.photoURL }}">
 					<h2>{{ guest.displayName }} <span ng-show="guestUid == item.hostUid">(Host)</span></h2>
-					<p>Back off, man. I'm a super-duper uber booger.</p>
+					<p>Joined {{ guest.timestamp | date:'EEE M/d @ h:mma'}}</p>
 				</div>
 		</div>
   </ion-content>
