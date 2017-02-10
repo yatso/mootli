@@ -147,7 +147,7 @@ function ($scope, $stateParams, fbloginService) {
 	$scope.fbUserData = fbloginService.fbUserData;
 }])
    
-.controller('makeAHangoutCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', function ($scope, $stateParams, Hangouts, fbloginService) {
+.controller('makeAHangoutCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$state', function ($scope, $stateParams, Hangouts, fbloginService, $state) {
     
     // everything is wrapped in onAuthStateChanged so that user data is generated only after the observer detects that they are logged in. Solves alot of user === 'null' issues.
 	firebase.auth().onAuthStateChanged(function(user) {
@@ -173,7 +173,17 @@ function ($scope, $stateParams, fbloginService) {
 				'maxGuests': 2
             }
 			$scope.addItem = function(){
-				Hangouts.addItem($scope.data);
+					Hangouts.addItem($scope.data).then(function() {
+							$state.go('hangouts');
+					}, function(err) {
+							console.warn('Unable to make hangout: ', err);
+							if (err && err.code == 'PERMISSION_DENIED') {
+									alert('Please fill out everything properly and try again.');
+							}
+							else {
+									alert('Unable to make your hangout. Please try again later.');
+							}
+					});
 			}
 			console.log('scope:', $scope.data);
 		} else {
