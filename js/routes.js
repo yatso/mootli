@@ -24,8 +24,8 @@ angular.module('app.routes', [])
 
   .state('hangoutsDetails', {
     url: '/details/:hangoutId',
-	params: {
-		item: ""		
+  params: {
+    item: ""    
 },
     templateUrl: 'templates/hangoutsDetails.html',
     controller: 'hangoutsDetailsCtrl'
