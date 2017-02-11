@@ -157,7 +157,6 @@ function ($scope, $stateParams, fbloginService) {
 			var defaultStart = new Date();
 			defaultStart.setSeconds(0);
 			defaultStart.setMilliseconds(0);
-			var defaultEnd = new Date(defaultStart.valueOf() + 60*60*1000);
 			
 			$scope.data = {
 				'hostUid': user.uid,
@@ -168,12 +167,15 @@ function ($scope, $stateParams, fbloginService) {
 				'phoneNumber': '',
 				'location': '',
 				'hangoutStartTime': defaultStart,
-				'hangoutEndTime': defaultEnd,
+				'hangoutDurationMinutes': '60',
 				'description': '',
 				'maxGuests': 2
             }
 			$scope.addItem = function(){
-					Hangouts.addItem($scope.data).then(function() {
+					var hangoutData = angular.copy($scope.data);
+					hangoutData.hangoutDurationMinutes = parseInt(hangoutData.hangoutDurationMinutes);
+					hangoutData.hangoutEndTime = new Date(hangoutData.hangoutStartTime.valueOf() + $scope.data.hangoutDurationMinutes*60*1000);
+					Hangouts.addItem(hangoutData).then(function() {
 							$state.go('hangouts');
 					}, function(err) {
 							console.warn('Unable to make hangout: ', err);

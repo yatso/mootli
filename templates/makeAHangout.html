@@ -27,12 +27,18 @@
           <input type="text" placeholder="e.g., Game Castle, Santa Clara, CA" ng-model="data.location">
         </label>
         <label class="item item-input item-stacked-label" id="makeAHangout-input8">
-          <span class="input-label">Start Date/Time</span>
+          <span class="input-label">Hangout Start</span>
           <input type="datetime-local" ng-model="data.hangoutStartTime">
         </label>
-        <label class="item item-input item-stacked-label" id="makeAHangout-input9">
-          <span class="input-label">End Date/Time</span>
-          <input type="datetime-local" ng-model="data.hangoutEndTime">
+        <label class="item item-input item-select" id="makeAHangout-input9">
+          <span class="input-label">Duration</span>
+					<select ng-model="data.hangoutDurationMinutes">
+						<option value="60">1 hour</option>
+						<option value="120">2 hours</option>
+						<option value="180">3 hours</option>
+						<option value="240">4 hours</option>
+						<option value="300">5 hours</option>
+					</select>
         </label>
         
         <label class="item item-input item-stacked-label" id="makeAHangout-input12">
