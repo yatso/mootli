@@ -50,9 +50,10 @@
 				<div class="item center">
 					Guest List
 		 		</div>
-				<div class="item item-avatar item-button-right" ng-repeat="(guestUid, guest) in item.guests">
+				<div class="item item-avatar" ng-repeat="(guestUid, guest) in item.guests">
 					<img ng-src="{{ guest.photoURL }}">
-					<h2>{{ guest.displayName }} <span ng-show="guestUid == item.hostUid">(Host)</span></h2>
+					<span class="badge badge-positive" ng-show="guestUid == item.hostUid">Host</span>
+					<h2>{{ guest.displayName }}</h2>
 					<p>Joined {{ guest.timestamp | date:'EEE M/d @ h:mma'}}</p>
 				</div>
 		</div>

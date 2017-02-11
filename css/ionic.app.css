@@ -9817,3 +9817,12 @@ a.button {
 .cardtitle {
   background-color: #f1f1f1;
   font-weight: 600; }
+
+.item .badge {
+  display: inline-block;
+  position: inherit;
+  top: inherit;
+  right: inherit;
+  margin-bottom: 10px;
+  vertical-align: bottom;
+}
