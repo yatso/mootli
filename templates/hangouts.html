@@ -14,7 +14,6 @@
       <p style="color:#575757;">Showing the latest hangouts near you</p>
     </div>
     <div class="list card" id="hangouts-card22" ui-sref="hangoutsDetails({ hangoutId: item.$id })" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
-      <div style="font-size: 0.75em; color: grey; text-align: right; padding-right: 5px; text-decoration: underline;">{{item.postDateTime | date:'MMM d, yyyy \| h:mm a'}}</div>
       <ion-list id="hangouts-list1">
         <ion-item id="hangouts-list-item15" class="item-icon-right cardtitle center">
           {{item.hangoutName}}
