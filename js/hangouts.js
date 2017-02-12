@@ -21,6 +21,7 @@ angular.module('hangouts', ['firebase'])
                 'location': data.location,
                 'hangoutStartTime': data.hangoutStartTime.getTime(),
                 'hangoutEndTime': data.hangoutEndTime.getTime(),
+								'hangoutDurationMinutes': data.hangoutDurationMinutes,
                 'description': data.description,
                 'maxGuests': data.maxGuests,
                 'postDateTime': firebase.database.ServerValue.TIMESTAMP,

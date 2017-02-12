@@ -21,8 +21,10 @@
           <img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
           <h2>Hosted by: {{ item.hostName }}</h2>
         </ion-item>
-         <ion-item class="item-icon-left" id="hangoutsDetails-list-item29">
-          <i class="icon ion-calendar"></i>{{ item.hangoutStartTime | date:'EEE M/d &middot; h:mma' }} - {{ item.hangoutEndTime | date:'h:mma' }}</ion-item>
+         <ion-item class="item-icon-left item-text-wrap" id="hangoutsDetails-list-item29">
+          <i class="icon ion-calendar"></i>{{ item.hangoutStartTime | date:'EEE M/d &middot; h:mma' }} - {{ item.hangoutEndTime | date:'h:mma' }}
+         	Hangout Duration: {{item.hangoutDurationMinutes / 60}} hr 
+         </ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item30">
           <i class="icon ion-location"></i>{{ item.location }}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
