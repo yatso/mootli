@@ -9815,8 +9815,9 @@ a.button {
   background-color: #EF473A; }
 
 .cardtitle {
-  background-color: #f1f1f1;
-  font-weight: 600; }
+  background-color: #EF473A;
+	color: white;
+  font-weight: 400; }
 
 .item .badge {
   display: inline-block;
