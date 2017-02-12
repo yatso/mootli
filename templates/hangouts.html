@@ -20,7 +20,9 @@
     <div class="list card" id="hangouts-card22" ui-sref="hangoutsDetails({ hangoutId: item.$id })" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
       <ion-list id="hangouts-list1">
         <ion-item id="hangouts-list-item15" class="item-icon-right cardtitle center">
-          {{item.hangoutName}}
+         	<div style="padding-left: 30px;">
+         		{{item.hangoutName}}
+         	</div>
           <i class="icon ion-ios-arrow-right"></i>
         </ion-item>
         <div class="item item-body" id="hangouts-list-item-container4">
