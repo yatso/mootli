@@ -9,8 +9,8 @@
       </h3>
      </div>
      <div>
-       <ion-item ng-if="item.hostUid == fbUserData.user.uid" class="item-borderless item-icon-right" style="color: lightgrey; text-align: right; padding-right: 0; padding-bottom: 0;">
-         <i ng-click="deleteHangout()" class="ion-ios-close-outline"> Delete Hangout</i>
+        <ion-item ng-if="item.hostUid == fbUserData.user.uid" class="item-borderless" style="color: lightgrey; text-align: right; padding-right: 0; padding-bottom: 0;">
+        	<i ng-click="deleteHangout()" class="ion-ios-close-outline"> Delete Hangout</i>
        </ion-item>
      </div>
     <div class="list card manual-card" id="hangoutsDetails-card23">
@@ -19,7 +19,8 @@
         <div style="font-size: 0.75em; color: grey; text-align: center; padding: 10px; text-decoration: none;">Hangout created on {{ item.postDateTime | date:'MMM d, yyyy @ h:mm a' }}</div>
         <ion-item class="item-avatar" id="hangoutsDetails-list-item27">
           <img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
-          <h2>Hosted by: {{ item.hostName }}</h2>
+          <span class="badge badge-positive">Host</span>
+          <h2>{{ item.hostName }}</h2>
         </ion-item>
        	<ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14">
               <i class="icon ion-calendar"></i>

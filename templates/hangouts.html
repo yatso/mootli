@@ -29,7 +29,9 @@
           <ion-list id="hangouts-list6">
             <ion-item class="item-avatar" id="hangouts-list-item12">
               <img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
-              <h2>Hosted by: {{item.hostName}}</h2>
+              	<span class="badge badge-positive" style="vertical-align: middle;">Host</span>
+              	<br>
+              	{{item.hostName}}
             </ion-item>
             <ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14">
               <i class="icon ion-calendar"></i>
