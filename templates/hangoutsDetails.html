@@ -32,7 +32,9 @@
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item30">
           <i class="icon ion-location"></i>{{ item.location }}</ion-item>
         <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
-          <i class="icon ion-ios-people"></i>Guests: {{ getGuestCount(item) }} / {{ item.maxGuests }}</ion-item>
+          <i class="icon ion-ios-people"></i>Guests: {{ getGuestCount(item) }} / {{ item.maxGuests }}
+          <span class="badge badge-assertive" ng-if="getGuestCount(item) >= item.maxGuests">Full</span>
+        </ion-item>
         <ion-item ng-if="isGuestOfHangout(item, fbUserData.user)" class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}">
           <i class="icon ion-email"></i>{{ item.email }} </ion-item>
         <ion-item ng-if="isGuestOfHangout(item, fbUserData.user)" class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
