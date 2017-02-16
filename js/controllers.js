@@ -43,6 +43,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
     $state.go('makeAHangout');
   };
   $scope.getGuestCount = Hangouts.getGuestCount;
+	$scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
     
 }])
    
