@@ -29,8 +29,8 @@
           <ion-list id="hangouts-list6">
             <ion-item class="item-avatar" id="hangouts-list-item12">
               <img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
-              	<span class="badge badge-positive" style="vertical-align: middle;" ng-if="item.hostUid != fbUserData.user.uid">Host</span>
-              	<span class="badge badge-positive" style="vertical-align: middle;" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
+              	<span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span>
+              	<span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
               	<br>
               	{{item.hostName}}
             </ion-item>

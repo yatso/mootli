@@ -19,7 +19,8 @@
         <div style="font-size: 0.75em; color: grey; text-align: center; padding: 10px; text-decoration: none;">Hangout created on {{ item.postDateTime | date:'MMM d, yyyy @ h:mm a' }}</div>
         <ion-item class="item-avatar" id="hangoutsDetails-list-item27">
           <img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
-          <span class="badge badge-positive">Host</span>
+          <span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span>
+          <span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
           <h2>{{ item.hostName }}</h2>
         </ion-item>
        	<ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14">
@@ -66,7 +67,8 @@
          </div>
         <div class="item item-avatar" ng-repeat="(guestUid, guest) in item.guests">
           <img ng-src="{{ guest.photoURL }}">
-          <span class="badge badge-positive" ng-show="guestUid == item.hostUid">Host</span>
+          <span class="badge badge-positive" ng-if="(guestUid == item.hostUid) && !(fbUserData.user.uid == item.hostUid)">Host</span>
+          <span class="badge badge-positive" ng-if=" (guestUid == item.hostUid) &&(fbUserData.user.uid == item.hostUid)">You're the Host</span>
           <h2>{{ guest.displayName }}</h2>
           <p>Joined {{ guest.timestamp | date:'EEE M/d @ h:mma'}}</p>
         </div>
