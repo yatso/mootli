@@ -3,9 +3,9 @@
     <button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
   </ion-nav-buttons>
   <ion-content padding="true" class=" manual-remove-top-padding has-header" ng-show="item">
-     <div ng-if="(isGuestOfHangout(item, fbUserData.user)) && (item.hostUid != fbUserData.user.uid)" class="center" style="border: 2px solid black; border-radius: 5px; margin-top:20px; padding: 10px 10px 0 10px">
+     <div ng-if="(isGuestOfHangout(item, fbUserData.user)) && (item.hostUid != fbUserData.user.uid)" class="center" style="border: 1px solid #e5e5e5; border-radius: 2px; margin-top:20px; padding: 10px 10px 0 10px">
        <h3>
-         <span style="color: black;">Thanks for joining. Welcome to the Hangout!</span>
+         <span style="color: #4c4c4c;">Thanks for joining. Welcome to the Hangout!</span>
       </h3>
      </div>
      <div>
