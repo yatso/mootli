@@ -9827,3 +9827,15 @@ a.button {
   margin-bottom: 5px;
   vertical-align: bottom;
 }
+
+.limitDesktopView {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-width: 550px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+}
