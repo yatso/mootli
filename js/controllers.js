@@ -44,7 +44,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
   };
   $scope.getGuestCount = Hangouts.getGuestCount;
 	$scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
-    
+	$scope.timeNow = new Date();
 }])
    
 .controller('mootliFAQCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -128,6 +128,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
     };
     $scope.getGuestCount = Hangouts.getGuestCount;
     $scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
+		$scope.timeNow = new Date();
 
     Hangouts.items.$loaded(function(items) {
         var item = items.$getRecord($stateParams.hangoutId);

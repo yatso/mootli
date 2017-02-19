@@ -36,11 +36,14 @@
             </ion-item>
             <ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14">
               <i class="icon ion-calendar"></i>
-              Hangout Duration: 
-              <span style="font-weight: 500;">{{item.hangoutDurationMinutes / 60}}h</span>
-              <br>
-              <hr style="border: 0;">
-              Starts: <span style="font-weight: 500;">{{item.hangoutStartTime | date:'EEE, MMM d @ h:mma'}}</span>
+             	<div style="font-weight: 500; color: red;">
+             		<span ng-show="timeNow < item.hangoutStartTime">Starts</span>
+             		<span ng-show="timeNow > item.hangoutStartTime">Started</span>
+             		<time am-time-ago="item.hangoutStartTime"></time>
+             	</div>
+              <div style="font-size: 0.75em;">
+              	{{item.hangoutStartTime | date:'EEE, MMM d @ h:mma'}} | Duration {{item.hangoutDurationMinutes / 60}}h
+              </div>
             </ion-item>
             <ion-item class="item-icon-left" id="hangouts-list-item16">
               <i class="icon ion-location"></i>{{item.location}}</ion-item>
