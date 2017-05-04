@@ -1,18 +1,18 @@
 angular.module('fbloginService', []).service('fbloginService', ['$rootScope', '$firebaseArray', function ($rootScope, $firebaseArray) {
 	var fbUserData = {
-		user: null
-		, onAuth: function () {
+		user: null,
+		onAuth: function () {
 			var self = this;
 			firebase.auth().onAuthStateChanged(function (user) {
 				if (user) {
 					var userObj = {
-						firebaseUid: user.uid
-						, fbUserData: {
-							displayName: user.providerData[0].displayName
-							, email: user.providerData[0].email
-							, photoURL: user.providerData[0].photoURL
-							, providerId: user.providerData[0].providerId
-							, uid: user.providerData[0].uid
+						firebaseUid: user.uid,
+						fbUserData: {
+							displayName: user.providerData[0].displayName,
+							email: user.providerData[0].email,
+							photoURL: user.providerData[0].photoURL,
+							providerId: user.providerData[0].providerId,
+							uid: user.providerData[0].uid
 						}
 					};
 					self.writeUserData(userObj);
@@ -21,11 +21,11 @@ angular.module('fbloginService', []).service('fbloginService', ['$rootScope', '$
 				console.log("onAuth, User: ", self.user);
 				$rootScope.$apply();
 			});
-		}
-		, writeUserData: function (userObj) {
+		},
+		writeUserData: function (userObj) {
 			firebase.database().ref('users/' + userObj.firebaseUid).set(userObj);
-		}
-		, signIn: function () {
+		},
+		signIn: function () {
 			// Shows in the console that the signIn function ran.
 			console.log("signIn function called");
 			var provider = new firebase.auth.FacebookAuthProvider();
@@ -48,8 +48,8 @@ angular.module('fbloginService', []).service('fbloginService', ['$rootScope', '$
 				var credential = error.credential;
 				// ...
 			});
-		}
-		, signOut: function () {
+		},
+		signOut: function () {
 			// shows in the console that signout function ran
 			console.log("signOut function called");
 			// Binds self to fbUserData object's 'this'
@@ -63,8 +63,8 @@ angular.module('fbloginService', []).service('fbloginService', ['$rootScope', '$
 				// An error happened.
 				console.log("an error happened", error);
 			});
-		}
-		, deleteAccount: function () {
+		},
+		deleteAccount: function () {
 			console.log("deleteAccount function called");
 			firebase.auth().currentUser.delete().catch(function (error) {
 				if (error.code == 'auth/requires-recent-login') {
@@ -72,10 +72,10 @@ angular.module('fbloginService', []).service('fbloginService', ['$rootScope', '$
 					firebase.auth().signOut().then(function () {
 						// The timeout allows the message to be displayed after the UI has
 						// changed to the signed out state.
-						setTimeout(function () {
-							console.log('Please sign in again to delete your account.');
-							alert('Please sign in again to delete your account.');
-						}, 1);
+							setTimeout(function () {
+								console.log('Please sign in again to delete your account.');
+								alert('Please sign in again to delete your account.');
+							}, 1);
 					});
 				}
 			});
