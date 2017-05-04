@@ -3,84 +3,76 @@ angular.module('app.controllers', []).controller('hangoutsCtrl', ['$scope', '$st
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
 function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, mobileCheckService) {
-		console.log('hangoutsCtrl:', $scope);
-		$scope.items = Hangouts.items;
-		$scope.fbUserData = fbloginService.fbUserData;
-		$scope.mobileCheckService = mobileCheckService.check;
-		$scope.checkLogin = function (userGoalMsg) {
-			console.log('checkLogin user:', $scope.fbUserData.user);
-			if ($scope.fbUserData.user) {
-				return true;
-			}
-			$ionicPopup.show({
-				template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>'
-				, title: 'Please log in before ' + userGoalMsg
-				, subTitle: ''
-				, scope: $scope
-				, buttons: [
-					{
-						text: 'Cancel'
-					}
-        ]
+ console.log('hangoutsCtrl:', $scope);
+ $scope.items = Hangouts.items;
+ $scope.fbUserData = fbloginService.fbUserData;
+ $scope.mobileCheckService = mobileCheckService.check;
+ $scope.checkLogin = function (userGoalMsg) {
+  console.log('checkLogin user:', $scope.fbUserData.user);
+  if ($scope.fbUserData.user) {
+   return true;
+  }
+  $ionicPopup.show({
+   template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>'
+   , title: 'Please log in before ' + userGoalMsg
+   , subTitle: ''
+   , scope: $scope
+   , buttons: [{text: 'Cancel'}]
 			}).then(function () {
 				console.log('User clicked cancel on Login Popup');
 			});
 		};
-		$scope.joinHangout = function (item) {
-			if (!this.checkLogin('joining a hangout')) {
-				return false;
+ $scope.joinHangout = function (item) {
+   if (!this.checkLogin('joining a hangout')) {
+    return false;
 			}
 			// Note: Even if the join fails (due to network connection, etc.), this will still bring the user to the detail page
 			// If that's not desired, use the returned Promise from join() to change state only upon resolve
-			Hangouts.join(item);
-			$state.go('hangoutsDetails', {
-				item: item
-			});
-		};
-		$scope.makeHangout = function () {
+   Hangouts.join(item);
+   $state.go('hangoutsDetails', {
+    item: item
+   });
+  };
+ $scope.makeHangout = function () {
 			if (!this.checkLogin('making a hangout')) {
 				return false;
 			}
 			$state.go('makeAHangout');
-		};
-		$scope.getGuestCount = Hangouts.getGuestCount;
-		$scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
-		$scope.timeNow = new Date();
-}]).controller('mootliFAQCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+ };
+ $scope.getGuestCount = Hangouts.getGuestCount;
+ $scope.isGuestOfHangout = Hangouts.isGuestOfHangout;
+ $scope.timeNow = new Date();
+}])
+
+.controller('mootliFAQCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
 function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
-		$scope.items = Hangouts.items;
-		$scope.fbUserData = fbloginService.fbUserData;
-		$scope.routeBasedOnUserStatus = function (userGoal, userGoalMsg, itemId) {
-			if ($scope.fbUserData.user && userGoal == 'make') {
-				// route them to the make page
-				$state.go('makeAHangout');
-			}
-			else if ($scope.fbUserData.user && userGoal == 'join') {
-				// route them to the hangoutDetails page
-				$state.go('hangoutsDetails', {
-					item: itemId
-				});
-			}
-			else {
-				$ionicPopup.show({
-					template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>'
-					, title: 'Please log in before ' + userGoalMsg
-					, subTitle: ''
-					, scope: $scope
-					, buttons: [
-						{
-							text: 'Cancel'
-						}
-        ]
-				}).then(function () {
-					console.log('User clicked cancel on ' + userGoal + ' Login Popup');
-				});
-			}
-		};
-}]).controller('hangoutsDetailsCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+ $scope.items = Hangouts.items;
+ $scope.fbUserData = fbloginService.fbUserData;
+ $scope.routeBasedOnUserStatus = function (userGoal, userGoalMsg, itemId) {
+  if ($scope.fbUserData.user && userGoal == 'make') {
+			// route them to the make page
+   $state.go('makeAHangout');
+  } else if ($scope.fbUserData.user && userGoal == 'join') {
+    // route them to the hangoutDetails page
+    $state.go('hangoutsDetails', {item: itemId});
+  } else {
+   $ionicPopup.show({
+    template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>'
+    , title: 'Please log in before ' + userGoalMsg
+    , subTitle: ''
+    , scope: $scope
+    , buttons: [{text: 'Cancel'}]
+   }).then(function () {
+    console.log('User clicked cancel on ' + userGoal + ' Login Popup');
+   });
+  }
+ };
+}])
+
+.controller('hangoutsDetailsCtrl', ['$scope', '$stateParams', 'Hangouts', 'fbloginService', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
