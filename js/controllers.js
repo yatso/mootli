@@ -167,12 +167,12 @@ function ($scope, $stateParams, fbloginService) {
       alert('Please fill out everything properly and try again.');
      } else {
       alert('Unable to make your hangout. Please try again later.');
-					}
+     }
     });
    }
    console.log('scope:', $scope.data);
   } else {
-			// No user is signed in.
-		}
-	});
+   // No user is signed in.
+  }
+ });
 }])
