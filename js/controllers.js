@@ -13,19 +13,19 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
    return true;
   }
   $ionicPopup.show({
-   template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>'
-   , title: 'Please log in before ' + userGoalMsg
-   , subTitle: ''
-   , scope: $scope
-   , buttons: [{text: 'Cancel'}]
-			}).then(function () {
-				console.log('User clicked cancel on Login Popup');
-			});
-		};
+   template: '<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>',
+   title: 'Please log in before ' + userGoalMsg,
+   subTitle: '',
+   scope: $scope,
+   buttons: [{text: 'Cancel'}]
+  }).then(function () {
+   console.log('User clicked cancel on Login Popup');
+  });
+ };
  $scope.joinHangout = function (item) {
    if (!this.checkLogin('joining a hangout')) {
     return false;
-			}
+   }
 			// Note: Even if the join fails (due to network connection, etc.), this will still bring the user to the detail page
 			// If that's not desired, use the returned Promise from join() to change state only upon resolve
    Hangouts.join(item);
@@ -35,7 +35,7 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state, m
   };
  $scope.makeHangout = function () {
 			if (!this.checkLogin('making a hangout')) {
-				return false;
+    return false;
 			}
 			$state.go('makeAHangout');
  };
