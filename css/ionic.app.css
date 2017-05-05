@@ -13179,3 +13179,21 @@ a.dark {
 	margin-bottom: 5px;
 	vertical-align: bottom;
 }
+
+
+@media only screen and (min-width: 768px) {
+/* For desktop: limit to 400px to simulate mobile */
+	#mainContainer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		max-width: 400px;
+		margin-top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
