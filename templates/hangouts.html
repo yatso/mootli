@@ -29,7 +29,6 @@
           <ion-list id="hangouts-list6">
             <ion-item class="item-avatar" id="hangouts-list-item12">
               <img ng-src="http://graph.facebook.com/{{item.hostFbUid}}/picture?type=large">
-              <p>{{item.hostFbUid}}</p>
               <span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span>
               <span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
               <br>
