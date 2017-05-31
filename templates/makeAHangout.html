@@ -5,7 +5,9 @@
 	<ion-content padding="true" class="has-header">
 		<form id="makeAHangout-form1" class="list">
 			<ion-list id="makeAHangout-list4">
-				<ion-item class="item-avatar" id="hangouts-list-item12"> <img ng-src="{{ user.photoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">
+				<ion-item class="item-avatar" id="hangouts-list-item12"> 
+<!--				<img ng-src="{{ user.photoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">-->
+          <img ng-src="http://graph.facebook.com/{{user.providerData[0].uid}}/picture?type=large">
 					<h2>Hosted by: {{ user.displayName }}</h2>
 					<h2>{{ user.email }}</h2> </ion-item>
 				<label class="item item-input item-stacked-label" id="makeAHangout-input3"> <span class="input-label">Hangout Name</span>
