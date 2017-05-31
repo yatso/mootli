@@ -130,7 +130,6 @@ function ($scope, $stateParams, Hangouts, fbloginService, $ionicPopup, $state) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
 function ($scope, $stateParams, fbloginService) {
- console.log("$scope: ", $scope);
  fbloginService.fbUserData.onAuth();
  $scope.fbUserData = fbloginService.fbUserData;
 }])

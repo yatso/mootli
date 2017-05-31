@@ -99,7 +99,7 @@
 					<div id="menu-container2" ng-show="fbUserData.user" data-componentid="container2">
 						<ion-list id="menu-list5" data-componentid="list5">
 							<ion-item class="item-avatar" id="menu-list-item34" data-componentid="list-item34">
-								<img ng-src="{{fbUserData.user.photoURL}}">
+								<img ng-src="http://graph.facebook.com/{{fbUserData.user.providerData[0].uid}}/picture?type=large">
 								<h2>Welcome, {{fbUserData.user.displayName}}!</h2>
 							</ion-item>
 						</ion-list>
