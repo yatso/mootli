@@ -1,5 +1,5 @@
 <ion-view title="Mootli" hide-back-button="true" id="page2" style="background-color:#FAFAFA;">
-	<ion-nav-buttons side="right" class="has-header">
+  <ion-nav-buttons side="right" class="has-header">
 		<button class="button button-stable icon ion-android-add" ng-click="makeHangout()"> Create</button>
 	</ion-nav-buttons>
 	<ion-content padding="true" class=" manual-remove-top-padding has-header">
@@ -28,11 +28,12 @@
         <div class="item item-body" id="hangouts-list-item-container4">
           <ion-list id="hangouts-list6">
             <ion-item class="item-avatar" id="hangouts-list-item12">
-              <img ng-src="{{ item.hostPhotoURL || 'https://firebasestorage.googleapis.com/v0/b/mootli-c5f77.appspot.com/o/avatars%2Fwink-smiley-avatar.png?alt=media&token=663a97bc-910b-4a0c-a29b-87630115b350' }}">
-              	<span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span>
-              	<span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
-              	<br>
-              	{{item.hostName}}
+<!--              <img ng-src="{{ item.hostPhotoURL || 'https://firebasestorage.googleapis.com/v0/b/mootli-c5f77.appspot.com/o/avatars%2Fwink-smiley-avatar.png?alt=media&token=663a97bc-910b-4a0c-a29b-87630115b350' }}">-->
+              <img ng-src="{{ 'http://graph.facebook.com/10100136391768623/picture?type=large' || 'https://firebasestorage.googleapis.com/v0/b/mootli-c5f77.appspot.com/o/avatars%2Fwink-smiley-avatar.png?alt=media&token=663a97bc-910b-4a0c-a29b-87630115b350' }}">
+              <span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span>
+              <span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
+              <br>
+              {{item.hostName}}
             </ion-item>
             <ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14">
               <i class="icon ion-calendar"></i>
