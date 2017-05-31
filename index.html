@@ -1,135 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-    <!-- Favicon link start-->  
-    <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="manifest.json">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Favicon link end-->
-    
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-<!--    <script src="cordova.js"></script>-->
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+ <title></title>
+ <!-- Favicon link start-->
+  <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="manifest.json">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+	<!-- Favicon link end-->
+	<script src="lib/ionic/js/ionic.bundle.js"></script>
+	<!-- cordova script (this will be a 404 during development) -->
+	<!--    <script src="cordova.js"></script>-->
+	<!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
+ <link href="css/ionic.app.css" rel="stylesheet">
+ <style type="text/css">
+  .platform-ios .manual-ios-statusbar-padding {
+   padding-top: 20px;
+  }
+  
+  .manual-remove-top-padding {
+   padding-top: 0px;
+  }
+  
+  .manual-remove-top-padding .scroll {
+   padding-top: 0px !important;
+  }
+  
+  ion-list.manual-list-fullwidth div.list,
+  .list.card.manual-card-fullwidth {
+   margin-left: -10px;
+   margin-right: -10px;
+  }
+  
+  ion-list.manual-list-fullwidth div.list > .item,
+  .list.card.manual-card-fullwidth > .item {
+   border-radius: 0px;
+   border-left: 0px;
+   border-right: 0px;
+  }
+  .show-list-numbers-and-dots ul {
+   list-style-type: disc;
+   padding-left: 40px;
+  }
+  .show-list-numbers-and-dots ol {
+   list-style-type: decimal;
+   padding-left: 40px;
+  }
+ </style>
+ <script src="js/app.js"></script>
+ <script src="js/controllers.js"></script>
+ <script src="js/routes.js"></script>
+ <script src="js/directives.js"></script>
+ <script src="js/services.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+ <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+ <!-- load momentJS (required for angular-moment) -->
+ <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+ <!-- load angular-moment -->
+ <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
+ <script src="js/firebase.init.js"></script>
+ <script src="js/hangouts.js"></script>
+ <script src="js/fblogin.js"></script>
+ <script src="js/mobileBrowserCheck.js"></script>
+ <!-- Only required for Tab projects w/ pages in multiple tabs
+ <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+ -->
+</head>
 
-    
-    <link href="css/ionic.app.css" rel="stylesheet">
-    
-
-    <style type="text/css">
-      .platform-ios .manual-ios-statusbar-padding{
-        padding-top:20px;
-      }
-      .manual-remove-top-padding{
-        padding-top:0px; 
-      }
-      .manual-remove-top-padding .scroll{
-        padding-top:0px !important;
-      }
-      ion-list.manual-list-fullwidth div.list, .list.card.manual-card-fullwidth {
-        margin-left:-10px;
-        margin-right:-10px;
-      }
-      ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidth > .item {
-        border-radius:0px;
-        border-left:0px;
-        border-right: 0px;
-      }
-      .show-list-numbers-and-dots ul{
-        list-style-type: disc;
-        padding-left:40px;
-      }
-      .show-list-numbers-and-dots ol{
-        list-style-type: decimal;
-        padding-left:40px;
-      }
-    </style>
-
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/routes.js"></script>
-    
-     
-    <script src="js/directives.js"></script>
-     
-    <script src="js/services.js"></script>
-     
-    <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
-     
-    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
-     
-    <script src="js/firebase.init.js"></script>
-     
-    <script src="js/hangouts.js"></script>
-     
-    <script src="js/fblogin.js"></script>
-     
-    <script src="js/mobileBrowserCheck.js"></script>
-    
-
-    <!-- Only required for Tab projects w/ pages in multiple tabs 
-    <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
-    -->
-
-  </head>
-  <body ng-app="app" animation="slide-left-right-ios7">
-  <div>
-  <ion-side-menus enable-menu-with-back-views="true" data-componentid="side-menu21">
-    <ion-side-menu-content>
-      <ion-nav-bar class="bar-assertive">
-        <ion-nav-back-button></ion-nav-back-button>
-        <ion-nav-buttons side="left">
-          <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-        </ion-nav-buttons>
-      </ion-nav-bar>
-      <ion-nav-view></ion-nav-view>
-    </ion-side-menu-content>
-    <ion-side-menu side="left" id="side-menu21" style="background-color:#FAFAFA;">
-      <ion-header-bar class="bar-stable">
-        <div class="title">Menu</div>
-      </ion-header-bar>
-      <ion-content ng-controller="menuCtrl" padding="true" class="side-menu-left has-header ">
-        <div id="menu-markdown10" style="text-align:center;" class="show-list-numbers-and-dots" data-componentid="markdown10">
-          <p style="color:#D1D1D1;">v2.1</p>
-        </div>
-        <a ui-sref="mootliFAQ" menu-close="" id="menu-button8" class="button button-positive  button-block button-clear" data-componentid="button8">Mootli FAQ</a>
-        <div id="menu-container1" ng-show="!(fbUserData.user)" data-componentid="container1">
-          <button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive  button-block" data-componentid="button3">Facebook Login</button>
-        </div>
-        <div id="menu-container2" ng-show="fbUserData.user" data-componentid="container2">
-          <ion-list id="menu-list5" data-componentid="list5">
-            <ion-item class="item-avatar" id="menu-list-item34" data-componentid="list-item34">
-              <img src="{{fbUserData.user.photoURL}}">
-              <h2>Welcome, {{fbUserData.user.displayName}}!</h2>
-            </ion-item>
-          </ion-list>
-          <button id="menu-button5" ng-click="fbUserData.signOut()" class="button button-positive  button-block button-outline" data-componentid="button5">Facebook Logout</button>
-          <button id="menu-button6" ng-click="fbUserData.deleteAccount()" ng-show="false" class="button button-positive  button-block button-outline" data-componentid="button6">Delete Account</button>
-        </div>
-      </ion-content>
-    </ion-side-menu>
-  </ion-side-menus>
-</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-91458069-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-  </body>
+<body ng-app="app" animation="slide-left-right-ios7">
+	<div id="mainContainer">
+		<ion-side-menus enable-menu-with-back-views="true" data-componentid="side-menu21">
+			<ion-side-menu-content>
+				<ion-nav-bar class="bar-assertive">
+					<ion-nav-back-button></ion-nav-back-button>
+					<ion-nav-buttons side="left">
+						<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+					</ion-nav-buttons>
+				</ion-nav-bar>
+				<ion-nav-view></ion-nav-view>
+			</ion-side-menu-content>
+			<ion-side-menu side="left" id="side-menu21" style="background-color:#FAFAFA;">
+				<ion-header-bar class="bar-stable">
+					<div class="title">Menu</div>
+				</ion-header-bar>
+				<ion-content ng-controller="menuCtrl" padding="true" class="side-menu-left has-header ">
+					<div id="menu-markdown10" style="text-align:center;" class="show-list-numbers-and-dots" data-componentid="markdown10">
+					<p style="color:#D1D1D1;">v3.3</p>
+					</div> <a ui-sref="mootliFAQ" menu-close="" id="menu-button8" class="button button-positive  button-block button-clear" data-componentid="button8">Mootli FAQ</a>
+					<div id="menu-container1" ng-show="!(fbUserData.user)" data-componentid="container1">
+						<button id="menu-button3" ng-click="fbUserData.signIn()" class="button button-positive button-block" data-componentid="button3">Facebook Login</button>
+					</div>
+					<div id="menu-container2" ng-show="fbUserData.user" data-componentid="container2">
+						<ion-list id="menu-list5" data-componentid="list5">
+							<ion-item class="item-avatar" id="menu-list-item34" data-componentid="list-item34">
+								<img ng-src="http://graph.facebook.com/{{fbUserData.user.providerData[0].uid}}/picture?type=large">
+								<h2>Welcome, {{fbUserData.user.displayName}}!</h2>
+							</ion-item>
+						</ion-list>
+						<button id="menu-button5" ng-click="fbUserData.signOut()" class="button button-positive  button-block button-outline" data-componentid="button5">Facebook Logout</button>
+						<button id="menu-button6" ng-click="fbUserData.deleteAccount()" ng-show="false" class="button button-positive  button-block button-outline" data-componentid="button6">Delete Account</button>
+					</div>
+				</ion-content>
+			</ion-side-menu>
+		</ion-side-menus>
+	</div>
+ <script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o)
+			, m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-91458069-1', 'auto');
+		ga('send', 'pageview');
+ </script>
+</body>
 </html>
