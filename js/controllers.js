@@ -144,6 +144,7 @@ function ($scope, $stateParams, fbloginService) {
    defaultStart.setSeconds(0);
    defaultStart.setMilliseconds(0);
    $scope.data = {
+    'hostFbUid': user.providerData[0].uid,
     'hostUid': user.uid,
     'hostPhotoURL': user.photoURL,
     'hostName': '',

@@ -8,6 +8,7 @@ angular.module('hangouts', ['firebase']).service('Hangouts', ['$firebaseArray', 
 			, addItem: function (data) {
 				var user = fbloginService.fbUserData.user;
 				return hangoutsArray.$add({
+          'hostFbUid': data.hostFbUid,
 					'hostUid': data.hostUid
 					, 'hostPhotoURL': data.hostPhotoURL
 					, 'hangoutName': data.hangoutName
