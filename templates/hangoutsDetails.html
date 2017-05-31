@@ -14,7 +14,10 @@
 			<ion-list id="hangoutsDetails-list2">
 				<ion-item id="hangoutsDetails-list-item26" class="cardtitle center">{{ item.hangoutName }}</ion-item>
 				<div style="font-size: 0.75em; color: grey; text-align: center; padding: 10px; text-decoration: none;">Hangout created on {{ item.postDateTime | date:'MMM d, yyyy @ h:mm a' }}</div>
-				<ion-item class="item-avatar" id="hangoutsDetails-list-item27"> <img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}"> <span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span> <span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
+				<ion-item class="item-avatar" id="hangoutsDetails-list-item27">
+<!--				<img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">-->
+        <img ng-src="http://graph.facebook.com/{{item.hostFbUid}}/picture?type=large">
+				<span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span> <span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
 					<h2>{{ item.hostName }}</h2> </ion-item>
 				<ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14"> <i class="icon ion-calendar"></i>
 					<div style="font-weight: 500; color: red;"> <span ng-show="timeNow < item.hangoutStartTime">Starts</span> <span ng-show="timeNow > item.hangoutStartTime">Started</span>
