@@ -26,6 +26,6 @@ angular.module('app.routes', [])
       url: '/make',
       templateUrl: 'templates/makeAHangout.html',
       controller: 'makeAHangoutCtrl'
-    })
-    $urlRouterProvider.otherwise('/hangouts')
+    });
+    $urlRouterProvider.otherwise('/hangouts');
   });
