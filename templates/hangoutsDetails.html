@@ -1,59 +1,85 @@
 <ion-view title="Hangout Details" hide-back-button="true" id="page5">
-	<ion-nav-buttons side="left" class="has-header">
-		<button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
-	</ion-nav-buttons>
-	<ion-content padding="true" class=" manual-remove-top-padding has-header" ng-show="item">
-		<div ng-if="(isGuestOfHangout(item, fbUserData.user)) && (item.hostUid != fbUserData.user.uid)" class="center" style="border: 1px solid #e5e5e5; border-radius: 2px; margin-top:20px; padding: 10px 10px 0 10px">
-			<h3>
-         <span style="color: #4c4c4c;">Thanks for joining. Welcome to the Hangout!</span>
-      </h3> </div>
-		<div>
-			<ion-item ng-if="item.hostUid == fbUserData.user.uid" class="item-borderless" style="color: lightgrey; text-align: right; padding-right: 0; padding-bottom: 0;"> <i ng-click="deleteHangout()" class="ion-ios-close-outline"> Delete Hangout</i> </ion-item>
-		</div>
-		<div class="list card" id="hangoutsDetails-card23">
-			<ion-list id="hangoutsDetails-list2">
-				<ion-item id="hangoutsDetails-list-item26" class="cardtitle center">{{ item.hangoutName }}</ion-item>
-				<div style="font-size: 0.75em; color: grey; text-align: center; padding: 10px; text-decoration: none;">Hangout created on {{ item.postDateTime | date:'MMM d, yyyy @ h:mm a' }}</div>
-				<ion-item class="item-avatar" id="hangoutsDetails-list-item27">
-<!--				<img ng-src="{{ item.hostPhotoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">-->
-        <img ng-src="http://graph.facebook.com/{{item.hostFbUid}}/picture?type=large">
-				<span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span> <span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
-					<h2>{{ item.hostName }}</h2> </ion-item>
-				<ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14"> <i class="icon ion-calendar"></i>
-					<div style="font-weight: 500; color: red;"> <span ng-show="timeNow < item.hangoutStartTime">Starts</span> <span ng-show="timeNow > item.hangoutStartTime">Started</span>
-						<time am-time-ago="item.hangoutStartTime"></time>
-					</div>
-					<div style="font-size: 0.75em;"> {{item.hangoutStartTime | date:'EEE, MMM d @ h:mma'}} | Duration {{item.hangoutDurationMinutes / 60}}h </div>
-				</ion-item>
-				<ion-item class="item-icon-left" id="hangoutsDetails-list-item30"> <i class="icon ion-location"></i>{{ item.location }}</ion-item>
-				<ion-item class="item-icon-left" id="hangoutsDetails-list-item31"> <i class="icon ion-ios-people"></i>
-					<div ng-if="(isGuestOfHangout(item, fbUserData.user)) && (item.hostUid != fbUserData.user.uid)"> <span class="badge badge-assertive">You're a Guest</span>
-						<br> </div> Guests: {{ getGuestCount(item) }} / {{ item.maxGuests }} <span class="badge badge-assertive" ng-if="getGuestCount(item) >= item.maxGuests">Full</span> </ion-item>
-				<ion-item ng-if="isGuestOfHangout(item, fbUserData.user)" class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}"> <i class="icon ion-email"></i>{{ item.email }} </ion-item>
-				<ion-item ng-if="isGuestOfHangout(item, fbUserData.user)" class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} "> <i class="icon ion-android-call"></i>{{ item.hostName }} {{ item.phoneNumber }} </ion-item>
-				<ion-item class="item item-text-wrap">
-					<div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
-						<p> {{ item.description }} </p>
-					</div>
-				</ion-item>
-			</ion-list>
-			<ion-item ng-show="item.hostUid != fbUserData.user.uid">
-				<button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="!fbUserData.user || !isGuestOfHangout(item, fbUserData.user)">Join</button>
-				<button class="button button-assertive button-large button-block" ng-click="leaveHangout()" ng-show="isGuestOfHangout(item, fbUserData.user)">Leave</button>
-			</ion-item>
-			</ion-list>
-		</div>
-		<div class="list">
-			<div class="item center" style="background-color:#f6f6f6;"> Guest List </div>
-			<div class="item item-avatar" ng-repeat="(guestUid, guest) in item.guests"> <img ng-src="{{ guest.photoURL }}"> <span class="badge badge-positive" ng-if="(guestUid == item.hostUid) && !(fbUserData.user.uid == item.hostUid)">Host</span> <span class="badge badge-positive" ng-if="(guestUid == item.hostUid) &&(fbUserData.user.uid == item.hostUid)">You're the Host</span> <span class="badge badge-assertive" ng-if="(fbUserData.user.uid == guestUid) && (item.hostUid != fbUserData.user.uid)">You're a Guest</span>
-				<h2>{{ guest.displayName }}</h2>
-				<p>Joined {{ guest.timestamp | date:'EEE M/d @ h:mma'}}</p>
-			</div>
-		</div>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br> </ion-content>
+  <ion-nav-buttons side="left" class="has-header">
+    <button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class=" manual-remove-top-padding has-header" ng-show="item">
+    <div ng-if="(isGuestOfHangout(item, fbUserData.user)) && (item.hostUid != fbUserData.user.uid)" class="center" style="border: 1px solid #e5e5e5; border-radius: 2px; margin-top:20px; padding: 10px 10px 0 10px">
+      <h3><span style="color: #4c4c4c;">Thanks for joining. Welcome to the Hangout!</span></h3>
+    </div>
+    <div>
+      <ion-item ng-if="item.hostUid == fbUserData.user.uid" class="item-borderless" style="color: lightgrey; text-align: right; padding-right: 0; padding-bottom: 0;">
+        <i ng-click="deleteHangout()" class="ion-ios-close-outline">Delete Hangout</i>
+      </ion-item>
+    </div>
+    <div class="list card" id="hangoutsDetails-card23">
+      <ion-list id="hangoutsDetails-list2">
+        <ion-item id="hangoutsDetails-list-item26" class="cardtitle center">
+          {{item.hangoutName}}
+        </ion-item>
+        <div style="font-size: 0.75em; color: grey; text-align: center; padding: 10px; text-decoration: none;">
+          Hangout created on {{item.postDateTime | date:'MMM d, yyyy @ h:mm a'}}
+        </div>
+        <ion-item class="item-avatar" id="hangoutsDetails-list-item27">
+          <img ng-src="http://graph.facebook.com/{{item.hostFbUid}}/picture?type=large">
+          <span class="badge badge-positive" ng-if="item.hostUid != fbUserData.user.uid">Host</span>
+          <span class="badge badge-positive" ng-if="item.hostUid == fbUserData.user.uid">You're the Host</span>
+          <h2>{{item.hostName}}</h2>
+        </ion-item>
+        <ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14">
+          <i class="icon ion-calendar"></i>
+          <div style="font-weight: 500; color: red;">
+            <span ng-show="timeNow < item.hangoutStartTime">Starts</span>
+            <span ng-show="timeNow > item.hangoutStartTime">Started</span>
+            <time am-time-ago="item.hangoutStartTime"></time>
+          </div>
+          <div style="font-size: 0.75em;">
+            {{item.hangoutStartTime | date:'EEE, MMM d @ h:mma'}} | Duration {{item.hangoutDurationMinutes / 60}}h
+          </div>
+        </ion-item>
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item30">
+          <i class="icon ion-location"></i>
+          {{item.location}}
+        </ion-item>
+        <ion-item class="item-icon-left" id="hangoutsDetails-list-item31">
+          <i class="icon ion-ios-people"></i>
+          <div ng-if="(isGuestOfHangout(item, fbUserData.user)) && (item.hostUid != fbUserData.user.uid)">
+            <span class="badge badge-assertive">You're a Guest</span>
+            <br>
+          </div>
+          Guests: {{getGuestCount(item)}} / {{item.maxGuests}}
+          <span class="badge badge-assertive" ng-if="getGuestCount(item) >= item.maxGuests">Full</span>
+        </ion-item>
+        <ion-item ng-if="isGuestOfHangout(item, fbUserData.user)" class="item-icon-left" id="hangoutsDetails-list-item32" href="mailto:{{item.email}}">
+          <i class="icon ion-email"></i>
+          {{item.email}}
+        </ion-item>
+        <ion-item ng-if="isGuestOfHangout(item, fbUserData.user)" class="item-icon-left" id="hangoutsDetails-list-item33" href="tel: {{item.phoneNumber}} ">
+          <i class="icon ion-android-call"></i>
+          {{item.hostName}} {{item.phoneNumber}}
+        </ion-item>
+        <ion-item class="item item-text-wrap">
+          <div id="hangoutsDetails-markdown9" class="show-list-numbers-and-dots">
+            <p>{{item.description}}</p>
+          </div>
+        </ion-item>
+      </ion-list>
+      <ion-item ng-show="item.hostUid != fbUserData.user.uid">
+        <button class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests" ng-click="joinHangout(item)" ng-show="!fbUserData.user || !isGuestOfHangout(item, fbUserData.user)">Join</button>
+        <button class="button button-assertive button-large button-block" ng-click="leaveHangout()" ng-show="isGuestOfHangout(item, fbUserData.user)">Leave</button>
+      </ion-item>
+    </div>
+    <div class="list">
+      <div class="item center" style="background-color:#f6f6f6;">
+        Guest List
+      </div>
+      <div class="item item-avatar" ng-repeat="(guestUid, guest) in item.guests">
+        <img ng-src="{{ guest.photoURL }}">
+        <span class="badge badge-positive" ng-if="(guestUid == item.hostUid) && !(fbUserData.user.uid == item.hostUid)">Host</span>
+        <span class="badge badge-positive" ng-if="(guestUid == item.hostUid) &&(fbUserData.user.uid == item.hostUid)">You're the Host</span>
+        <span class="badge badge-assertive" ng-if="(fbUserData.user.uid == guestUid) && (item.hostUid != fbUserData.user.uid)">You're a Guest</span>
+        <h2>{{guest.displayName}}</h2>
+        <p>Joined {{guest.timestamp | date:'EEE M/d @ h:mma'}}</p>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>
