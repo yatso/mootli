@@ -1,17 +1,19 @@
 <ion-view title="Mootli" hide-back-button="true" id="page2" style="background-color:#FAFAFA;">
   <ion-nav-buttons side="right" class="has-header">
-		<button class="button button-stable icon ion-android-add" ng-click="makeHangout()"> Create</button>
-	</ion-nav-buttons>
-	<ion-content padding="true" class=" manual-remove-top-padding has-header">
-		<div class="spacer" style="width: 300px; height: 19px;"></div>
-		<div id="hangouts-markdown11" ng-if="!(mobileCheckService)" style="text-align:center;" class="show-list-numbers-and-dots">
-			<p style="margin-top:0px;color:#E94B42;">Tip: Mootli is optimized for mobile experience</p>
-		</div>
-		<div class="center">
-			<h3 style="color: #4c4c4c;">' Connect with like-minded locals instantly '</h2>
+    <button class="button button-stable icon ion-android-add" ng-click="makeHangout()"> Create</button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class=" manual-remove-top-padding has-header">
+    <div class="spacer" style="width: 300px; height: 19px;"></div>
+    <div id="hangouts-markdown11" ng-if="!(mobileCheckService)" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="margin-top:0px;color:#E94B42;">
+        Tip: Mootli is optimized for mobile experience
+      </p>
     </div>
     <div class="center">
-    	<a ui-sref="mootliFAQ" id="menu-button8" class="" data-componentid="button8">Mootli FAQ</a>
+      <h3 style="color: #4c4c4c;">' Connect with like-minded locals instantly '</h2>
+    </div>
+    <div class="center">
+      <a ui-sref="mootliFAQ" id="menu-button8" class="" data-componentid="button8">Mootli FAQ</a>
     </div>
     <div class="spacer" style="width: 300px; height: 10px;"></div>
     <div id="hangouts-markdown12" style="text-align:center;" class="show-list-numbers-and-dots">
@@ -20,9 +22,9 @@
     <div class="list card" id="hangouts-card22" ui-sref="hangoutsDetails({ hangoutId: item.$id })" ng-repeat="item in items | orderBy: '-postDateTime' track by item.$id">
       <ion-list id="hangouts-list1">
         <ion-item id="hangouts-list-item15" class="item-icon-right cardtitle center">
-         	<div style="padding-left: 30px;">
-         		{{item.hangoutName}}
-         	</div>
+          <div style="padding-left: 30px;">
+            {{item.hangoutName}}
+          </div>
           <i class="icon ion-ios-arrow-right"></i>
         </ion-item>
         <div class="item item-body" id="hangouts-list-item-container4">
@@ -36,28 +38,28 @@
             </ion-item>
             <ion-item class="item-icon-left item-text-wrap" id="hangouts-list-item14">
               <i class="icon ion-calendar"></i>
-             	<div style="font-weight: 500; color: red;">
-             		<span ng-show="timeNow < item.hangoutStartTime">Starts</span>
-             		<span ng-show="timeNow > item.hangoutStartTime">Started</span>
-             		<time am-time-ago="item.hangoutStartTime"></time>
-             	</div>
+              <div style="font-weight: 500; color: red;">
+                <span ng-show="timeNow < item.hangoutStartTime">Starts</span>
+                <span ng-show="timeNow > item.hangoutStartTime">Started</span>
+                <time am-time-ago="item.hangoutStartTime"></time>
+              </div>
               <div style="font-size: 0.75em;">
-              	{{item.hangoutStartTime | date:'EEE, MMM d @ h:mma'}} | Duration {{item.hangoutDurationMinutes / 60}}h
+                {{item.hangoutStartTime | date:'EEE, MMM d @ h:mma'}} | Duration {{item.hangoutDurationMinutes / 60}}h
               </div>
             </ion-item>
             <ion-item class="item-icon-left" id="hangouts-list-item16">
-              <i class="icon ion-location"></i>{{item.location}}</ion-item>
+              <i class="icon ion-location"></i>
+              {{item.location}}
+            </ion-item>
             <ion-item class="item-icon-left" id="hangouts-list-item17">
               <i class="icon ion-ios-people"></i>
               <div ng-if="(isGuestOfHangout(item, fbUserData.user)) && (item.hostUid != fbUserData.user.uid)">
-              	<span class="badge badge-assertive" >You're a Guest</span>
-              	<br>
+                <span class="badge badge-assertive" >You're a Guest</span>
+                <br>
               </div>
               Guests:  {{getGuestCount(item)}} /  {{item.maxGuests}}
             </ion-item>
           </ion-list>
-<!--          Join Button on hangout page disabled for now to reduce confusion for users-->
-<!--          <button id="hangouts-button1" ng-click="joinHangout(item)" class="button button-positive button-large button-block" ng-disabled="getGuestCount(item) >= item.maxGuests">Join</button>-->
         </div>
       </ion-list>
     </div>

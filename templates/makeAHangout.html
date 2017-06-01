@@ -1,43 +1,58 @@
 <ion-view title="Create a Hangout" hide-back-button="true" id="page8">
-	<ion-nav-buttons side="left" class="has-header">
-		<button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
-	</ion-nav-buttons>
-	<ion-content padding="true" class="has-header">
-		<form id="makeAHangout-form1" class="list">
-			<ion-list id="makeAHangout-list4">
-				<ion-item class="item-avatar" id="hangouts-list-item12"> 
-<!--				<img ng-src="{{ user.photoURL || 'img/wZLvOIXSOSonQmET3pu7_cartoonman.jpg' }}">-->
+  <ion-nav-buttons side="left" class="has-header">
+    <button class="button button-icon icon ion-android-arrow-back" ui-sref="hangouts"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header">
+    <form id="makeAHangout-form1" class="list">
+      <ion-list id="makeAHangout-list4">
+        <ion-item class="item-avatar" id="hangouts-list-item12">
           <img ng-src="http://graph.facebook.com/{{user.providerData[0].uid}}/picture?type=large">
-					<h2>Hosted by: {{ user.displayName }}</h2>
-					<h2>{{ user.email }}</h2> </ion-item>
-				<label class="item item-input item-stacked-label" id="makeAHangout-input3"> <span class="input-label">Hangout Name</span>
-					<input type="text" placeholder="e.g., Board Game Night" ng-model="data.hangoutName"> </label>
-				<label class="item item-input item-stacked-label" id="makeAHangout-input4"> <span class="input-label">Brief Description of Hangout</span>
-					<input type="text" placeholder="e.g., We need one more player for Civilization" ng-model="data.description"> </label>
-				<label class="item item-input item-stacked-label" id="makeAHangout-input5"> <span class="input-label">Max Guests</span>
-					<input type="number" placeholder="e.g., 3" ng-model="data.maxGuests" min="2"> </label>
-				<label class="item item-input item-stacked-label" id="makeAHangout-input6"> <span class="input-label">Location</span>
-					<input type="text" placeholder="e.g., Game Castle, Santa Clara, CA" ng-model="data.location"> </label>
-				<label class="item item-input item-stacked-label" id="makeAHangout-input8"> <span class="input-label">Hangout Start Time</span>
-					<input type="datetime-local" ng-model="data.hangoutStartTime"> </label>
-				<label class="item item-input item-select" id="makeAHangout-input9"> <span class="input-label">Duration</span>
-					<select ng-model="data.hangoutDurationMinutes">
-						<option value="60">1 hour</option>
-						<option value="120">2 hours</option>
-						<option value="180">3 hours</option>
-						<option value="240">4 hours</option>
-						<option value="300">5 hours</option>
-						<option value="360">6 hours</option>
-						<option value="420">7 hours</option>
-						<option value="480">8 hours</option>
-						<option value="540">9 hours</option>
-						<option value="600">10 hours</option>
-						<option value="660">11 hours</option>
-						<option value="720">12 hours</option>
-					</select>
-				</label>
-				<label class="item item-input item-stacked-label" id="makeAHangout-input12"> <span class="input-label">Your number (for guest contact)</span>
-					<input type="tel" placeholder="e.g., 408-323-1222" ng-model="data.phoneNumber"> </label>
-			</ion-list>
-		</form> <a id="makeAHangout-button2" ng-click="addItem()" class="button button-positive button-large button-block">Create Hangout</a> </ion-content>
+          <h2>Hosted by: {{user.displayName}}</h2>
+          <h2>{{user.email}}</h2>
+        </ion-item>
+        <label class="item item-input item-stacked-label" id="makeAHangout-input3">
+          <span class="input-label">Hangout Name</span>
+          <input type="text" placeholder="e.g., Board Game Night" ng-model="data.hangoutName">
+        </label>
+        <label class="item item-input item-stacked-label" id="makeAHangout-input4">
+          <span class="input-label">Brief Description of Hangout</span>
+          <input type="text" placeholder="e.g., We need one more player for Civilization" ng-model="data.description">
+        </label>
+        <label class="item item-input item-stacked-label" id="makeAHangout-input5">
+          <span class="input-label">Max Guests</span>
+          <input type="number" placeholder="e.g., 3" ng-model="data.maxGuests" min="2">
+        </label>
+        <label class="item item-input item-stacked-label" id="makeAHangout-input6">
+          <span class="input-label">Location</span>
+          <input type="text" placeholder="e.g., Game Castle, Santa Clara, CA" ng-model="data.location">
+        </label>
+        <label class="item item-input item-stacked-label" id="makeAHangout-input8">
+          <span class="input-label">Hangout Start Time</span>
+          <input type="datetime-local" ng-model="data.hangoutStartTime">
+        </label>
+        <label class="item item-input item-select" id="makeAHangout-input9">
+          <span class="input-label">Duration</span>
+          <select ng-model="data.hangoutDurationMinutes">
+            <option value="60">1 hour</option>
+            <option value="120">2 hours</option>
+            <option value="180">3 hours</option>
+            <option value="240">4 hours</option>
+            <option value="300">5 hours</option>
+            <option value="360">6 hours</option>
+            <option value="420">7 hours</option>
+            <option value="480">8 hours</option>
+            <option value="540">9 hours</option>
+            <option value="600">10 hours</option>
+            <option value="660">11 hours</option>
+            <option value="720">12 hours</option>
+          </select>
+        </label>
+        <label class="item item-input item-stacked-label" id="makeAHangout-input12">
+          <span class="input-label">Your number (for guest contact)</span>
+          <input type="tel" placeholder="e.g., 408-323-1222" ng-model="data.phoneNumber">
+        </label>
+      </ion-list>
+    </form>
+    <a id="makeAHangout-button2" ng-click="addItem()" class="button button-positive button-large button-block">Create Hangout</a>
+  </ion-content>
 </ion-view>
