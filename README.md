@@ -1,7 +1,7 @@
-<a href="https://yatso.github.io/todo-list-vanillajs/"><img src="images/your-todo-list-screenshot.png" width="550px">
+<a href="https://mootli-c5f77.firebaseapp.com/"><img src="images/your-todo-list-screenshot.png" width="550px">
 </a>
 
-## Live Demo: https://yatso.github.io/todo-list-vanillajs/
+## Live Demo: https://mootli-c5f77.firebaseapp.com
 
 
 # Mootli
