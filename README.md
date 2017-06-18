@@ -1,4 +1,4 @@
-<a href="https://mootli-c5f77.firebaseapp.com/"><img src="images/your-todo-list-screenshot.png" width="550px">
+<a href="https://mootli-c5f77.firebaseapp.com/"><img src="images/mootli-screenshot.png" width="600px">
 </a>
 
 ## Live Demo: https://mootli-c5f77.firebaseapp.com
