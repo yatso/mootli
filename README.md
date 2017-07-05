@@ -1,6 +1,6 @@
 # Mootli
 
-Instant-meetup. Hybrid mobile app built with Ionic(HTML/CSS/AngularJS) 
+Connect with like-minded locals instantly. Hybrid mobile app built with Ionic(HTML/CSS/AngularJS) 
 
 <a href="https://mootli-c5f77.firebaseapp.com/"><img src="images/mootli-screenshot.png" width="600px">
 </a>
