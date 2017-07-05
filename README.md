@@ -1,3 +1,7 @@
+# Mootli
+
+Instant-meetup. Hybrid mobile app built with Ionic(HTML/CSS/AngularJS) 
+
 <a href="https://mootli-c5f77.firebaseapp.com/"><img src="images/mootli-screenshot.png" width="600px">
 </a>
 
@@ -9,9 +13,6 @@
 
 [Mootli portfolio page](https://yatso.me/mootli.html)
 
-# Mootli
-
-Instant-meetup hybrid mobile app built with Ionic(HTML/CSS/AngularJS) 
 
 # Product Requirements Spreadsheet
 
