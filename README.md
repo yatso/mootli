@@ -22,4 +22,5 @@ Instant-meetup. Hybrid mobile app built with Ionic(HTML/CSS/AngularJS)
 
 # Authors
 
-* **Yat So**  - [yatso](https://github.com/yatso)
+* **Yat So**  
+  - [GitHub](https://github.com/yatso)
